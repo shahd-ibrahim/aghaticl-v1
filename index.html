@@ -1,0 +1,3150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Aghatti | منيو أغاتي التفاعلي</title>
+  <meta name="description" content="منيو مطعم أغاتي للمأكولات العراقية الفاخرة — بوابة الأقسام الفضائية، البحث الفوري، والقائمة الشاملة (Cosmic Gastronomy QR Menu)." />
+  <meta name="theme-color" content="#070A0E" />
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aghatti | منيو أغاتي التفاعلي" />
+  <meta property="og:description" content="استكشف أكثر من 75 طبقاً عراقياً أصيلاً وقائمة الغداء الملكية (115 ر.س) في مطعم أغاتي." />
+  <meta property="og:image" content="./brand/logo-outline.png" />
+  <link rel="icon" type="image/png" href="./brand/logo-outline.png" />
+  <link rel="apple-touch-icon" href="./brand/logo-outline.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070A0E;
+      --bg-deep: #030609;
+      --bg-card: #0D141C;
+      --turquoise: #1ECAD3;
+      --light-blue: #63D2FF;
+      --border-glow: rgba(30, 202, 211, 0.42);
+      --text-main: #F5F8FA;
+      --text-muted: #98A4B3;
+      --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      background: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    /* Keyframes */
+    @keyframes logoGlow {
+      0%, 100% {
+        filter: url(#aghattiOutlineCrisp) drop-shadow(0 0 6px rgba(30, 202, 211, 0.38));
+      }
+      50% {
+        filter: url(#aghattiOutlineCrisp) drop-shadow(0 0 15px rgba(99, 210, 255, 0.82));
+      }
+    }
+
+    @keyframes archLevitate {
+      0%, 100% {
+        transform: translate3d(0, 0px, 0);
+        box-shadow: 0 22px 55px rgba(0, 0, 0, 0.78),
+                    0 0 24px rgba(30, 202, 211, 0.34),
+                    inset 0 0 28px rgba(30, 202, 211, 0.18);
+      }
+      50% {
+        transform: translate3d(0, -10px, 0);
+        box-shadow: 0 32px 68px rgba(0, 0, 0, 0.85),
+                    0 0 38px rgba(99, 210, 255, 0.58),
+                    inset 0 0 34px rgba(99, 210, 255, 0.28);
+      }
+    }
+
+    @keyframes cardFloatEven {
+      0%, 100% { transform: translate3d(0, 0px, 0); }
+      50% { transform: translate3d(0, -5px, 0); }
+    }
+
+    @keyframes cardFloatOdd {
+      0%, 100% { transform: translate3d(0, 0px, 0); }
+      50% { transform: translate3d(0, -7px, 0); }
+    }
+
+    @keyframes warpScaleIn {
+      0% {
+        opacity: 0;
+        transform: perspective(1000px) scale(0.86) translate3d(0, 22px, -120px);
+        filter: blur(8px) brightness(1.45);
+      }
+      100% {
+        opacity: 1;
+        transform: perspective(1000px) scale(1) translate3d(0, 0, 0);
+        filter: blur(0px) brightness(1);
+      }
+    }
+
+    @keyframes staggerUp {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 10px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    #starParticles {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cosmic-shell {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 960px;
+      min-height: 100dvh;
+      margin: 0 auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .editorial-frame {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      background: radial-gradient(circle at 50% 25%, rgba(16, 32, 46, 0.86) 0%, rgba(7, 10, 14, 0.94) 76%);
+      border: 1.5px solid var(--border-glow);
+      border-radius: 26px;
+      padding: 16px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 25px 75px rgba(0, 0, 0, 0.85), inset 0 0 25px rgba(30, 202, 211, 0.08);
+      overflow: hidden;
+    }
+
+    .editorial-frame::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 21px;
+      border: 1px solid rgba(99, 210, 255, 0.16);
+      pointer-events: none;
+    }
+
+    /* Top Header */
+    .header {
+      position: relative;
+      z-index: 35;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .logo-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .logo-btn:active {
+      transform: scale(0.94);
+    }
+
+    .logo-img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      animation: logoGlow 4s infinite ease-in-out;
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+      text-align: start;
+      line-height: 1.15;
+    }
+
+    .brand-ar {
+      font-size: 16px;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .brand-en {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      color: var(--light-blue);
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      background: rgba(30, 202, 211, 0.12);
+      border: 1px solid var(--border-glow);
+      color: var(--light-blue);
+      padding: 6px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-luxury);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+    }
+
+    .pill-btn:hover,
+    .pill-btn.active {
+      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
+      color: #05080C;
+      border-color: transparent;
+      box-shadow: 0 0 18px rgba(30, 202, 211, 0.45);
+    }
+
+    .back-categories-btn {
+      background: linear-gradient(135deg, rgba(30, 202, 211, 0.95), rgba(99, 210, 255, 0.95));
+      color: #04070B;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 900;
+      font-family: inherit;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 20px rgba(30, 202, 211, 0.55);
+      transition: transform 0.25s var(--ease-luxury), box-shadow 0.25s ease;
+    }
+
+    .back-categories-btn.visible {
+      display: inline-flex;
+    }
+
+    .back-categories-btn:hover {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 0 26px rgba(99, 210, 255, 0.8);
+    }
+
+    /* =========================================================================
+       LIVE SEARCH BAR & "القائمة الشاملة / Full Index" TOP COMMAND BAR
+       ========================================================================= */
+    .command-bar {
+      position: relative;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 12px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid rgba(30, 202, 211, 0.16);
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      inset-inline-start: 13px;
+      color: var(--turquoise);
+      font-size: 13.5px;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(7, 12, 18, 0.85);
+      border: 1px solid rgba(30, 202, 211, 0.38);
+      border-radius: 999px;
+      padding: 8px 34px 8px 36px;
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 600;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-input:focus {
+      border-color: var(--light-blue);
+      box-shadow: 0 0 18px rgba(30, 202, 211, 0.32);
+    }
+
+    .search-clear-btn {
+      position: absolute;
+      inset-inline-end: 10px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      display: none;
+      place-items: center;
+    }
+
+    .search-clear-btn.visible {
+      display: grid;
+    }
+
+    .full-index-btn {
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(30, 202, 211, 0.22), rgba(99, 210, 255, 0.18));
+      border: 1.5px solid var(--turquoise);
+      color: #FFFFFF;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 16px rgba(30, 202, 211, 0.22);
+      transition: all 0.25s var(--ease-luxury);
+      white-space: nowrap;
+    }
+
+    .full-index-btn:hover {
+      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
+      color: #04080C;
+      border-color: transparent;
+      box-shadow: 0 0 24px rgba(99, 210, 255, 0.55);
+      transform: translateY(-1px);
+    }
+
+    /* Live Search Results Overlay (Pure Text Rows — No Images) */
+    .search-results-dropdown {
+      position: absolute;
+      top: calc(100% - 4px);
+      inset-inline: 0;
+      max-height: 370px;
+      overflow-y: auto;
+      background: rgba(8, 13, 20, 0.98);
+      backdrop-filter: blur(18px);
+      border: 1.5px solid var(--turquoise);
+      border-radius: 20px;
+      padding: 8px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.92), 0 0 30px rgba(30, 202, 211, 0.3);
+      display: none;
+      z-index: 120;
+    }
+
+    .search-results-dropdown.open {
+      display: block;
+      animation: staggerUp 0.22s var(--ease-luxury) forwards;
+    }
+
+    .search-result-row {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 10px 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      text-align: start;
+      color: var(--text-main);
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .search-result-row:last-child {
+      border-bottom: none;
+    }
+
+    .search-result-row:hover {
+      background: rgba(30, 202, 211, 0.14);
+      transform: translateX(-2px);
+    }
+
+    [dir="ltr"] .search-result-row:hover {
+      transform: translateX(2px);
+    }
+
+    .search-row-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .search-row-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .search-row-en {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .search-cat-tag {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--light-blue);
+      background: rgba(99, 210, 255, 0.12);
+      border: 1px solid rgba(99, 210, 255, 0.3);
+      padding: 1px 8px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .search-row-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .search-row-cal {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--light-blue);
+    }
+
+    .search-row-price {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--turquoise);
+      background: rgba(30, 202, 211, 0.12);
+      border: 1px solid rgba(30, 202, 211, 0.35);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    /* =========================================================================
+       COMPREHENSIVE TEXT-ONLY MASTER MENU INDEX ("القائمة الشاملة / Full Index")
+       ========================================================================= */
+    .full-index-card {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      height: 88dvh;
+      max-height: 860px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, #0D1620 0%, #060A0F 100%);
+      border: 1.5px solid var(--turquoise);
+      border-radius: 26px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.92), 0 0 40px rgba(30, 202, 211, 0.28);
+      overflow: hidden;
+      animation: warpScaleIn 0.32s var(--ease-luxury) forwards;
+    }
+
+    .full-index-header {
+      padding: 16px 18px 12px;
+      border-bottom: 1px solid rgba(30, 202, 211, 0.22);
+      background: rgba(7, 11, 16, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .full-index-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .full-index-cat-strip {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .full-index-cat-strip::-webkit-scrollbar { display: none; }
+
+    .index-jump-chip {
+      flex-shrink: 0;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: rgba(30, 202, 211, 0.08);
+      border: 1px solid rgba(30, 202, 211, 0.3);
+      color: var(--light-blue);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .index-jump-chip:hover {
+      background: var(--turquoise);
+      color: #04080C;
+    }
+
+    .full-index-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 18px 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--turquoise) transparent;
+    }
+
+    .index-category-block {
+      margin-bottom: 20px;
+    }
+
+    .index-cat-heading {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--turquoise);
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(30, 202, 211, 0.32);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .index-text-row {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 8px 8px;
+      border-radius: 10px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      font-family: inherit;
+      color: var(--text-main);
+      cursor: pointer;
+      text-align: start;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+
+    .index-text-row:hover {
+      background: rgba(30, 202, 211, 0.12);
+    }
+
+    .index-dish-name {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .index-dish-name-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-inline-start: 6px;
+    }
+
+    .index-leader-dots {
+      flex: 1;
+      border-bottom: 1px dotted rgba(152, 164, 179, 0.28);
+      margin: 0 6px;
+      min-width: 16px;
+    }
+
+    .index-meta-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .index-dish-cal {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--light-blue);
+    }
+
+    .index-dish-price {
+      font-size: 13.5px;
+      font-weight: 900;
+      color: var(--turquoise);
+      min-width: 62px;
+      text-align: end;
+    }
+
+    /* =========================================================================
+       VIEW 1: FULL-SCREEN SPACE-AGE CATEGORY PORTAL (Interactive Category Hub)
+       ========================================================================= */
+    .portal-hub-view {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 8px 2px 4px;
+      animation: warpScaleIn 0.55s var(--ease-luxury) forwards;
+    }
+
+    .hub-intro {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .hub-intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--light-blue);
+      background: rgba(30, 202, 211, 0.12);
+      border: 1px solid rgba(30, 202, 211, 0.35);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .hub-title {
+      font-size: clamp(19px, 3.2vw, 25px);
+      font-weight: 900;
+      color: #FFFFFF;
+      letter-spacing: 0.2px;
+    }
+
+    /* Highlighted SET MENU (115 SAR) Holographic Banner */
+    .set-menu-portal-card {
+      position: relative;
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 13px 16px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(30, 202, 211, 0.22) 0%, rgba(13, 25, 36, 0.92) 55%, rgba(99, 210, 255, 0.2) 100%);
+      border: 1.5px solid var(--turquoise);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.65), 0 0 24px rgba(30, 202, 211, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.28s var(--ease-luxury), box-shadow 0.28s ease;
+    }
+
+    .set-menu-portal-card:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.75), 0 0 32px rgba(99, 210, 255, 0.45);
+    }
+
+    .set-menu-badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 900;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--turquoise), var(--light-blue));
+      color: #04080C;
+      margin-bottom: 4px;
+    }
+
+    .set-menu-title {
+      font-size: 15.5px;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .set-menu-sub {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .set-menu-price-orb {
+      flex-shrink: 0;
+      padding: 8px 15px;
+      border-radius: 16px;
+      background: rgba(7, 10, 14, 0.85);
+      border: 1.5px solid var(--light-blue);
+      text-align: center;
+      box-shadow: 0 0 18px rgba(99, 210, 255, 0.3);
+    }
+
+    .set-menu-price-orb strong {
+      display: block;
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--turquoise);
+      line-height: 1.1;
+    }
+
+    .set-menu-price-orb span {
+      font-size: 10px;
+      color: var(--light-blue);
+      font-weight: 700;
+    }
+
+    /* 10 Holographic Category Cards Grid */
+    .categories-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 11px;
+    }
+
+    @media (min-width: 640px) {
+      .categories-hub-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .categories-hub-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 14px;
+      }
+    }
+
+    .holo-cat-wrap-even {
+      animation: cardFloatEven 5.2s ease-in-out infinite;
+    }
+
+    .holo-cat-wrap-odd {
+      animation: cardFloatOdd 6s ease-in-out infinite;
+    }
+
+    .holo-cat-card {
+      position: relative;
+      height: 100%;
+      background: linear-gradient(160deg, rgba(16, 28, 40, 0.88) 0%, rgba(8, 13, 19, 0.95) 100%);
+      border: 1px solid rgba(30, 202, 211, 0.35);
+      border-radius: 20px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.25s var(--ease-luxury), border-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), inset 0 0 15px rgba(30, 202, 211, 0.08);
+      will-change: transform;
+    }
+
+    .holo-cat-card:hover {
+      border-color: var(--light-blue);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8), 0 0 24px rgba(30, 202, 211, 0.38);
+    }
+
+    .holo-cat-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      z-index: 2;
+    }
+
+    .holo-cat-num {
+      font-size: 10.5px;
+      font-weight: 900;
+      color: var(--turquoise);
+      background: rgba(30, 202, 211, 0.12);
+      border: 1px solid rgba(30, 202, 211, 0.35);
+      padding: 1px 8px;
+      border-radius: 999px;
+    }
+
+    .holo-cat-count {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--light-blue);
+      background: rgba(99, 210, 255, 0.12);
+      border: 1px solid rgba(99, 210, 255, 0.3);
+      padding: 1px 8px;
+      border-radius: 999px;
+    }
+
+    .holo-cat-arch {
+      position: relative;
+      width: 100%;
+      height: 92px;
+      border-radius: 48px 48px 14px 14px;
+      overflow: hidden;
+      border: 1px solid rgba(30, 202, 211, 0.45);
+      margin-bottom: 8px;
+      background: #060A0F;
+    }
+
+    .holo-cat-arch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s var(--ease-luxury);
+    }
+
+    .holo-cat-card:hover .holo-cat-arch img {
+      transform: scale(1.1);
+    }
+
+    .holo-cat-name-ar {
+      font-size: 14px;
+      font-weight: 800;
+      color: #FFFFFF;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .holo-cat-name-en {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--light-blue);
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    /* =========================================================================
+       VIEW 2: ANTI-GRAVITY DISH SHOWCASE STAGE (Inside Selected Category)
+       ========================================================================= */
+    .dish-showcase-view {
+      flex: 1;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 4px;
+      animation: warpScaleIn 0.55s var(--ease-luxury) forwards;
+    }
+
+    .dish-showcase-view.active {
+      display: flex;
+    }
+
+    .portal-hub-view.hidden {
+      display: none;
+    }
+
+    .category-stage-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 16px;
+      background: rgba(30, 202, 211, 0.07);
+      border: 1px solid rgba(30, 202, 211, 0.24);
+      z-index: 20;
+    }
+
+    .stage-cat-title {
+      font-size: 15px;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .stage-cat-counter {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--light-blue);
+      background: rgba(99, 210, 255, 0.12);
+      border: 1px solid rgba(99, 210, 255, 0.3);
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+
+    /* Center Anti-Gravity Arch-Portal Stage */
+    .stage-wrapper {
+      position: relative;
+      flex: 1;
+      min-height: 330px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 6px 0;
+      touch-action: pan-y;
+      perspective: 1000px;
+    }
+
+    .arch-window {
+      position: relative;
+      width: 248px;
+      height: 326px;
+      border-radius: 145px 145px 26px 26px;
+      border: 2px solid var(--turquoise);
+      background: linear-gradient(180deg, rgba(30, 202, 211, 0.15) 0%, rgba(9, 14, 20, 0.9) 100%);
+      animation: archLevitate 4.2s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .arch-window::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 139px 139px 20px 20px;
+      border: 1px solid rgba(99, 210, 255, 0.32);
+      pointer-events: none;
+    }
+
+    .carousel-track {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .dish-slide {
+      position: absolute;
+      width: 234px;
+      height: 312px;
+      border-radius: 138px 138px 22px 22px;
+      overflow: hidden;
+      transition: transform 0.56s var(--ease-luxury),
+                  opacity 0.56s var(--ease-luxury),
+                  filter 0.56s var(--ease-luxury);
+      cursor: pointer;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.72);
+      background: #090E14;
+      will-change: transform, opacity;
+    }
+
+    .dish-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--ease-luxury);
+      pointer-events: none;
+    }
+
+    .dish-slide.active {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 1;
+      z-index: 10;
+      filter: brightness(1.05);
+      animation: archLevitate 4.2s infinite ease-in-out;
+    }
+
+    .dish-slide.active img {
+      transform: scale(1.05) translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0);
+    }
+
+    .dish-slide.prev {
+      transform: translate3d(185px, 8px, -50px) scale(0.75);
+      opacity: 0.42;
+      z-index: 4;
+      filter: brightness(0.65);
+    }
+
+    .dish-slide.next {
+      transform: translate3d(-185px, 8px, -50px) scale(0.75);
+      opacity: 0.42;
+      z-index: 4;
+      filter: brightness(0.65);
+    }
+
+    [dir="ltr"] .dish-slide.prev {
+      transform: translate3d(-185px, 8px, -50px) scale(0.75);
+    }
+    [dir="ltr"] .dish-slide.next {
+      transform: translate3d(185px, 8px, -50px) scale(0.75);
+    }
+
+    .dish-slide.hidden {
+      transform: translate3d(0, 15px, -90px) scale(0.48);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Visible Glowing Left/Right Stage Arrows */
+    .stage-side-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--turquoise);
+      background: rgba(7, 12, 18, 0.85);
+      backdrop-filter: blur(8px);
+      color: var(--turquoise);
+      font-size: 22px;
+      font-weight: 900;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 25;
+      box-shadow: 0 0 18px rgba(30, 202, 211, 0.38);
+      transition: all 0.22s var(--ease-luxury);
+    }
+
+    .stage-side-arrow:hover {
+      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
+      color: #04080C;
+      box-shadow: 0 0 26px rgba(99, 210, 255, 0.75);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .stage-side-arrow.arrow-right {
+      right: 6px;
+    }
+
+    .stage-side-arrow.arrow-left {
+      left: 6px;
+    }
+
+    /* Clean Bottom Readout */
+    .dish-info {
+      text-align: center;
+      z-index: 20;
+      padding: 4px 10px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info-fade .dish-title-ar,
+    .info-fade .dish-title-en {
+      animation: staggerUp 0.4s var(--ease-luxury) 0ms both;
+    }
+
+    .info-fade .dish-desc {
+      animation: staggerUp 0.42s var(--ease-luxury) 55ms both;
+    }
+
+    .info-fade .meta-row,
+    .info-fade .allergen-row {
+      animation: staggerUp 0.45s var(--ease-luxury) 110ms both;
+    }
+
+    .dish-title-ar {
+      font-size: 22px;
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.25;
+    }
+
+    .dish-title-en {
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Playfair Display', 'Plus Jakarta Sans', serif;
+      color: var(--light-blue);
+      letter-spacing: 0.4px;
+      margin-bottom: 5px;
+    }
+
+    .dish-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 420px;
+      margin: 0 auto 8px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .price-tag {
+      font-size: 18px;
+      font-weight: 900;
+      color: #04080C;
+      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
+      padding: 3px 14px;
+      border-radius: 999px;
+      box-shadow: 0 0 18px rgba(30, 202, 211, 0.45);
+    }
+
+    .cal-tag {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--light-blue);
+      background: rgba(99, 210, 255, 0.12);
+      border: 1px solid rgba(99, 210, 255, 0.35);
+      padding: 3px 12px;
+      border-radius: 999px;
+    }
+
+    .allergen-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 24px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .allergen-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: #FDE68A;
+      background: rgba(212, 175, 55, 0.14);
+      border: 1px solid rgba(212, 175, 55, 0.42);
+      padding: 2px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .allergen-clean {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(99, 210, 255, 0.85);
+    }
+
+    /* Dots & Footer Navigation */
+    .nav-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .arrow-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border-glow);
+      background: rgba(30, 202, 211, 0.1);
+      color: var(--turquoise);
+      font-size: 17px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: 0.2s;
+      flex-shrink: 0;
+    }
+    .arrow-btn:hover {
+      background: var(--turquoise);
+      color: #05080B;
+    }
+
+    .dots {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 260px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      width: 20px;
+      background: linear-gradient(90deg, var(--turquoise), var(--light-blue));
+      box-shadow: 0 0 8px var(--turquoise);
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 10, 0.88);
+      backdrop-filter: blur(14px);
+      z-index: 600;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      max-height: 90dvh;
+      overflow-y: auto;
+      scrollbar-width: none;
+      background: linear-gradient(180deg, #101B27 0%, #070B10 100%);
+      border: 1.5px solid var(--turquoise);
+      border-radius: 26px;
+      padding: 20px 18px 22px;
+      box-shadow: 0 25px 75px rgba(0, 0, 0, 0.9), 0 0 36px rgba(30, 202, 211, 0.28);
+      animation: warpScaleIn 0.35s var(--ease-luxury) forwards;
+    }
+    .modal-card::-webkit-scrollbar { display: none; }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(7, 10, 14, 0.8);
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 10;
+    }
+
+    .course-step-card {
+      background: rgba(30, 202, 211, 0.06);
+      border: 1px solid rgba(30, 202, 211, 0.24);
+      border-radius: 16px;
+      padding: 10px 13px;
+      margin-bottom: 9px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .course-step-num {
+      font-size: 11px;
+      font-weight: 900;
+      color: #04080C;
+      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
+      padding: 2px 8px;
+      border-radius: 999px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* QR Lock Screen */
+    .qr-lock {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 35%, #0F1C28 0%, #06090D 80%);
+      z-index: 999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .qr-lock.visible { display: flex; }
+
+    .lock-card {
+      max-width: 365px;
+      width: 100%;
+      border: 1.5px solid var(--turquoise);
+      border-radius: 26px;
+      padding: 28px 22px;
+      background: rgba(11, 16, 22, 0.94);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(30, 202, 211, 0.22);
+    }
+
+    .lock-main-logo {
+      height: 110px;
+      width: auto;
+      object-fit: contain;
+      margin: 0 auto 14px;
+      display: block;
+      filter: url(#aghattiMainDark) drop-shadow(0 0 14px rgba(30, 202, 211, 0.4));
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden SVG Filters for Crisp Rendering of Official Aghatti PNG Logos on Dark #070A0E -->
+  <svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <filter id="aghattiOutlineCrisp" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feMorphology in="SourceGraphic" operator="dilate" radius="0.35" result="dilated" />
+        <feComponentTransfer in="dilated">
+          <feFuncA type="linear" slope="4.8" intercept="0" />
+        </feComponentTransfer>
+      </filter>
+      <filter id="aghattiMainDark" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          1.15  0     0     0  0.04
+          0     1.12  0     0  0.03
+          0     0     1.10  0  0.02
+         -1.85 -0.65 -1.85  0  4.25
+        " />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Floating Ambient Star-Particles in Turquoise (#1ECAD3) & Light Blue (#63D2FF) -->
+  <canvas id="starParticles"></canvas>
+
+  <!-- QR Lock Screen -->
+  <div id="qrLockScreen" class="qr-lock">
+    <div class="lock-card">
+      <img src="./brand/logo-main.png" alt="Aghatti Iraqi Cuisine" class="lock-main-logo" />
+      <h2 style="font-size:20px; margin-bottom:8px; color:#fff;">يرجى مسح الباركود على الطاولة</h2>
+      <p style="font-size:13px; color:#98A4B3; line-height:1.6; margin-bottom:20px;">
+        هذا المنيو مخصص للضيوف داخل مطعم أغاتي عبر رمز QR الخاص بالطاولة.<br/>
+        Please scan the table QR code to access the menu.
+      </p>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:center;">
+        <button type="button" onclick="unlockDemo()" class="pill-btn active" style="padding:10px 24px; font-size:13px;">
+          معاينة تجريبية (Demo Bypass)
+        </button>
+        <a href="./qr.html" class="pill-btn" style="font-size:11.5px;">
+          بوابة توليد رموز الطاولات (QR Generator)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Cosmic Gastronomy App Shell -->
+  <div class="cosmic-shell">
+    <div class="editorial-frame">
+
+      <!-- Top Header -->
+      <header class="header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button type="button" id="headerLogoBtn" class="logo-btn" onclick="openCategoryHub()" title="العودة لبوابة الأقسام">
+            <img src="./brand/logo-outline.png" alt="Aghatti Logo" class="logo-img" />
+            <div class="brand-titles">
+              <span class="brand-ar" id="brandArTitle">أغاتي</span>
+              <span class="brand-en">AGHATTI • IRAQI CUISINE</span>
+            </div>
+          </button>
+
+          <!-- Glowing Return to Categories Button (Visible inside Category Showcase) -->
+          <button type="button" id="backToCategoriesBtn" class="back-categories-btn" onclick="openCategoryHub()">
+            ← الأقسام / Categories
+          </button>
+        </div>
+
+        <div class="controls">
+          <span id="tableBadge" style="font-size:11.5px; font-weight:800; color:var(--light-blue);">طاولة #01</span>
+          <button type="button" class="pill-btn" onclick="openSetMenuModal()" id="setMenuTopBtn">
+            ✦ قائمة الغداء 115 ر.س
+          </button>
+          <a href="./qr.html" class="pill-btn" title="مولد باركود الطاولات">QR</a>
+          <button type="button" id="langToggle" class="pill-btn" onclick="toggleLang()">EN</button>
+        </div>
+      </header>
+
+      <!-- ===================================================================
+           TOP LIVE SEARCH BAR & "القائمة الشاملة / Full Index" BUTTON
+           =================================================================== -->
+      <div class="command-bar">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="liveSearchInput"
+            class="search-input"
+            placeholder="ابحث بالاسم أو القسم... / Search menu..."
+            autocomplete="off"
+            oninput="handleLiveSearch(this.value)"
+            onfocus="if(this.value.trim()) handleLiveSearch(this.value)"
+          />
+          <button type="button" id="searchClearBtn" class="search-clear-btn" onclick="clearLiveSearch()" aria-label="Clear search">×</button>
+        </div>
+
+        <button type="button" id="fullIndexTopBtn" class="full-index-btn" onclick="openFullIndexModal()">
+          <span>☰</span>
+          <span id="fullIndexBtnLabel">القائمة الشاملة / Full Index</span>
+        </button>
+
+        <!-- Real-Time Text Search Results Overlay -->
+        <div id="searchResultsDropdown" class="search-results-dropdown" role="listbox"></div>
+      </div>
+
+      <!-- ===================================================================
+           VIEW 1: FULL-SCREEN SPACE-AGE CATEGORY PORTAL (10 Categories + Set Menu)
+           =================================================================== -->
+      <section id="portalHubView" class="portal-hub-view" aria-label="Space-Age Category Portal">
+        <div>
+          <div class="hub-intro">
+            <span class="hub-intro-badge" id="hubIntroBadge">✦ بوابة الأقسام الفضائية • اختر القسم لاستكشاف الأطباق</span>
+            <h1 class="hub-title" id="hubMainTitle">منيو أغاتي للمأكولات العراقية الفاخرة</h1>
+          </div>
+
+          <!-- Highlighted SET MENU (115 SAR) Portal Banner -->
+          <div class="set-menu-portal-card" onclick="openSetMenuModal()" role="button" tabindex="0">
+            <div>
+              <span class="set-menu-badge" id="setMenuBadgeText">✦ عرض خاص متكامل • SPECIAL SET MENU</span>
+              <div class="set-menu-title" id="setMenuCardTitle">قائمة الغداء الملكية | SET MENU</div>
+              <div class="set-menu-sub" id="setMenuCardSub">شوربة + سلطات + مقبلات باردة وساخنة + طبق رئيسي (مسكوف أو قوزي) + تمن + حلويات ومشروبات</div>
+            </div>
+            <div class="set-menu-price-orb">
+              <strong>115 SAR</strong>
+              <span id="setMenuPerPerson">للشخص • Per Person</span>
+            </div>
+          </div>
+
+          <!-- 10 Glowing Holographic Category Cards -->
+          <div id="categoriesHubGrid" class="categories-hub-grid"></div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 2: ANTI-GRAVITY DISH SHOWCASE STAGE (Arch-Portal Carousel)
+           =================================================================== -->
+      <section id="dishShowcaseView" class="dish-showcase-view" aria-label="Anti-Gravity Dish Showcase">
+        <div class="category-stage-header">
+          <div>
+            <span id="stageCategoryTitle" class="stage-cat-title"></span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span id="stageSlideCounter" class="stage-cat-counter">1 / 8</span>
+            <button type="button" class="pill-btn" onclick="openCategoryHub()" id="stageHubPillBtn">
+              ← الأقسام / Categories
+            </button>
+          </div>
+        </div>
+
+        <!-- Center Anti-Gravity Arch-Portal Stage -->
+        <main class="stage-wrapper" id="swipeArea">
+          <button type="button" class="stage-side-arrow arrow-right" onclick="prevSlide()" aria-label="Previous Dish">‹</button>
+          <div class="arch-window"></div>
+          <div class="carousel-track" id="carouselTrack"></div>
+          <button type="button" class="stage-side-arrow arrow-left" onclick="nextSlide()" aria-label="Next Dish">›</button>
+        </main>
+
+        <!-- Clean Bottom Dish Readout -->
+        <div class="dish-info">
+          <div id="dishInfoContent" class="info-fade">
+            <h2 id="dishTitleAr" class="dish-title-ar"></h2>
+            <div id="dishTitleEn" class="dish-title-en"></div>
+            <p id="dishDesc" class="dish-desc"></p>
+            <div class="meta-row">
+              <span id="dishPrice" class="price-tag"></span>
+              <span id="dishCal" class="cal-tag"></span>
+              <button type="button" class="pill-btn" onclick="openDishLightbox(currentSlideIndex)" id="inspectDishBtn">
+                تكبير الصورة والتفاصيل ✦
+              </button>
+            </div>
+            <div id="dishAllergensRow" class="allergen-row"></div>
+          </div>
+
+          <div class="nav-footer">
+            <button type="button" class="arrow-btn" onclick="prevSlide()" aria-label="Previous">‹</button>
+            <div id="dotsContainer" class="dots"></div>
+            <button type="button" class="arrow-btn" onclick="nextSlide()" aria-label="Next">›</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       COMPREHENSIVE TEXT-ONLY MASTER MENU INDEX ("القائمة الشاملة / Full Index")
+       ======================================================================= -->
+  <div id="fullIndexModal" class="modal-backdrop" onclick="if(event.target.id==='fullIndexModal') closeFullIndexModal()">
+    <div class="full-index-card" role="dialog" aria-modal="true" aria-labelledby="fullIndexTitle">
+      <div class="full-index-header">
+        <div class="full-index-top-row">
+          <div>
+            <h2 id="fullIndexTitle" style="font-size:18px; font-weight:900; color:#fff;">
+              القائمة الشاملة • Full Master Index
+            </h2>
+            <p id="fullIndexSub" style="font-size:11.5px; color:var(--light-blue);">
+              اضغط على أي طبق للانتقال الفوري إلى صورته داخل القوس التفاعلي
+            </p>
+          </div>
+          <button type="button" class="modal-close-btn" style="position:static;" onclick="closeFullIndexModal()" aria-label="Close">×</button>
+        </div>
+        <div id="fullIndexCatStrip" class="full-index-cat-strip"></div>
+      </div>
+
+      <div id="fullIndexBody" class="full-index-body"></div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       SET MENU MODAL (قائمة الغداء / SET MENU — 115 SAR per person)
+       ======================================================================= -->
+  <div id="setMenuModal" class="modal-backdrop" onclick="if(event.target.id==='setMenuModal') closeSetMenuModal()">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button type="button" class="modal-close-btn" onclick="closeSetMenuModal()" aria-label="Close">×</button>
+      <div style="text-align:center; margin-bottom:14px;">
+        <img src="./brand/logo-outline.png" alt="Aghatti" style="height:46px; filter:url(#aghattiOutlineCrisp) drop-shadow(0 0 8px rgba(30,202,211,0.5)); margin-bottom:6px;" />
+        <div class="set-menu-badge">115 SAR • 115 ر.س للشخص</div>
+        <h2 id="setModalHeading" style="font-size:20px; font-weight:900; color:#fff; margin-top:4px;">قائمة الغداء الملكية | SET MENU</h2>
+        <p id="setModalSubtitle" style="font-size:12.5px; color:var(--text-muted); margin-top:4px; line-height:1.5;"></p>
+      </div>
+      <div id="setMenuCoursesList"></div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       FULL-VIEW DISH LIGHTBOX MODAL
+       ======================================================================= -->
+  <div id="dishLightbox" class="modal-backdrop" onclick="if(event.target.id==='dishLightbox') closeDishLightbox()">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button type="button" class="modal-close-btn" onclick="closeDishLightbox()" aria-label="Close">×</button>
+      <div style="width:236px; height:306px; margin:4px auto 14px; border-radius:135px 135px 22px 22px; border:2px solid var(--turquoise); overflow:hidden; box-shadow:0 16px 40px rgba(0,0,0,0.75), 0 0 24px rgba(30,202,211,0.32);">
+        <img id="lightboxImg" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block;" />
+      </div>
+      <div style="text-align:center;">
+        <h2 id="lightboxTitleAr" style="font-size:21px; font-weight:900; color:#fff;"></h2>
+        <div id="lightboxTitleEn" style="font-size:13.5px; font-weight:700; color:var(--light-blue); margin-bottom:8px;"></div>
+        <p id="lightboxDescAr" style="font-size:13px; color:#F5F8FA; line-height:1.55; margin-bottom:6px;"></p>
+        <p id="lightboxDescEn" style="font-size:12px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;"></p>
+        <div class="meta-row">
+          <span id="lightboxPrice" class="price-tag"></span>
+          <span id="lightboxCal" class="cal-tag"></span>
+        </div>
+        <div id="lightboxAllergens" class="allergen-row" style="margin-top:8px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // قاعدة بيانات منيو أغاتي الكاملة (78 طبقاً عبر 10 أقسام + قائمة الغداء 115 ر.س)
+    // =========================================================================
+    const ALLERGEN_LABELS = {
+  spicy: { ar: "حار", en: "Spicy", icon: "🌶" },
+  wheat: { ar: "قمح", en: "Wheat / Gluten", icon: "🌾" },
+  nuts: { ar: "جوز", en: "Walnuts / Nuts", icon: "🌰" },
+  milk: { ar: "حليب", en: "Dairy / Milk", icon: "🥛" },
+  sesame: { ar: "سمسم", en: "Sesame", icon: "✦" },
+};
+    const SET_MENU_DATA = {
+  title: { ar: "قائمة الغداء الملكية | SET MENU", en: "SET MENU | Royal Iraqi Lunch" },
+  price: 115,
+  unit: { ar: "115 ر.س للشخص", en: "115 SAR per person" },
+  subtitle: {
+    ar: "تجربة غداء عراقية متكاملة تجمع أشهر أطباق أغاتي من الشوربة والمقبلات حتى الطبق الرئيسي والحلويات",
+    en: "A complete Iraqi culinary journey featuring Aghatti's signature soups, mezze, main courses, desserts & beverages"
+  },
+  courses: [
+    {
+      step: "01",
+      title: { ar: "الشوربة", en: "Soup Course" },
+      detail: { ar: "اختيارك من شوربة العدس العراقية أو شوربة الكريمة أو شوربة باجي", en: "Choice of Traditional Lentil Soup, Cream Soup, or Pacha Soup" }
+    },
+    {
+      step: "02",
+      title: { ar: "السلطات", en: "Fresh Salads" },
+      detail: { ar: "سلطة الباذنجان العراقية، تبولة، أو سلطة الفتوش بدبس الرمان", en: "Iraqi Eggplant Salad, Tabbouleh, or Pomegranate Fattoush" }
+    },
+    {
+      step: "03",
+      title: { ar: "المقبلات الباردة والساخنة", en: "Cold & Hot Appetizers" },
+      detail: { ar: "تشكيلة حمص، متبل، محمرة، ورق عنب مع كبة أرز وكبة لحم وبوريك", en: "Assorted Hummus, Moutabbal, Muhammara & Vine Leaves with Rice Kubba, Meat Kubba & Borek" }
+    },
+    {
+      step: "04",
+      title: { ar: "الطبق الرئيسي والتمن", en: "Main Course & Iraqi Rice" },
+      detail: { ar: "اختيارك من المسكوف العراقي على الحطب أو قوزي اللحم أو المشاوي مع تمن باقيلاء وتمن برياني", en: "Choice of Wood-Fired Iraqi Masgouf, Lamb Quzi, or Charcoal Grills served with Dill Fava Rice & Biryani Rice" }
+    },
+    {
+      step: "05",
+      title: { ar: "الحلويات والمشروبات", en: "Desserts & Beverages" },
+      detail: { ar: "مدكوكة أغاتي أو أم علي أو عثملية مع المشروبات الغازية والشاي العراقي المهيل", en: "Aghatti Madkouka, Umm Ali, or Othmalieh served with soft drinks & Iraqi cardamom tea" }
+    }
+  ]
+};
+    const MENU_DATA = [
+  // =========================================================================
+  // 1. الشوربات | Soups (4 Dishes)
+  // =========================================================================
+  {
+    id: "soups",
+    order: 1,
+    name: { ar: "الشوربات", en: "Soups" },
+    subtitle: { ar: "شوربات عراقية دافئة محضرة يومياً", en: "Warm Iraqi & coastal soups simmered daily" },
+    thumbnail: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "lentil-soup",
+        name: { ar: "شوربة عدس", en: "Lentil Soup" },
+        desc: {
+          ar: "شوربة عدس بلاد الرافدين التقليدية المطبوخة ببطء مع الشعيرية والكمون وزيت الزيتون",
+          en: "Traditional Mesopotamian golden lentil soup slow-simmered with toasted vermicelli and cumin"
+        },
+        price: 23,
+        calories: 348,
+        image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "cream-soup",
+        name: { ar: "شوربة كريمة", en: "Cream Soup" },
+        desc: {
+          ar: "شوربة كريمة غنية وناعمة بقطع الدجاج الطرية والأعشاب العطرية",
+          en: "Velvety rich cream soup simmered with tender chicken pieces and aromatic herbs"
+        },
+        price: 24,
+        calories: 485,
+        image: "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk", "wheat"]
+      },
+      {
+        id: "seafood-soup",
+        name: { ar: "شوربة البحريات", en: "Seafood Soup" },
+        desc: {
+          ar: "شوربة ثمار البحر الغنية بالروبيان والكالماري والكريمة الطازجة",
+          en: "Coastal seafood bisque enriched with jumbo prawns, calamari, and fresh cream"
+        },
+        price: 39,
+        calories: 342,
+        image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk", "wheat"]
+      },
+      {
+        id: "pacha-soup",
+        name: { ar: "شوربة باجي", en: "Pacha Soup" },
+        desc: {
+          ar: "مرق الباجي العراقي التراثي الغني المطبوخ ببطء مع البهارات العراقية والليمون الأسود",
+          en: "Authentic slow-simmered Iraqi Pacha broth infused with Basra black lime and traditional spices"
+        },
+        price: 26,
+        calories: 390,
+        image: "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 2. المقبلات الباردة | Cold Appetizers (8 Dishes)
+  // =========================================================================
+  {
+    id: "cold-appetizers",
+    order: 2,
+    name: { ar: "المقبلات الباردة", en: "Cold Appetizers" },
+    subtitle: { ar: "مازات عراقية ومشرقية أصيلة بزيت الزيتون البكر", en: "Signature Iraqi & Levantine cold mezze" },
+    thumbnail: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "muhammara",
+        name: { ar: "محمرة", en: "Muhammara" },
+        desc: {
+          ar: "مزيج فاخر من الجوز المحمص ودبس الرمان ودبس الفليفلة وزيت الزيتون",
+          en: "Roasted crushed walnuts blended with pomegranate molasses, red pepper paste, and olive oil"
+        },
+        price: 35,
+        calories: 785,
+        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts", "wheat", "sesame"]
+      },
+      {
+        id: "eggplant-moutabbal",
+        name: { ar: "متبل باذنجان", en: "Eggplant Moutabbal" },
+        desc: {
+          ar: "باذنجان مشوي على الفحم مهروس مع الطحينة ودبس الرمان والجوز وحب الرمان",
+          en: "Charcoal-roasted eggplant mashed with tahini, pomegranate molasses, walnuts, and pomegranate seeds"
+        },
+        price: 35,
+        calories: 447,
+        image: "https://images.unsplash.com/photo-1593001874117-c99c800e3eb7?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["sesame", "nuts", "milk"]
+      },
+      {
+        id: "hummus",
+        name: { ar: "حمص", en: "Hummus" },
+        desc: {
+          ar: "حمص ناعم بالطحينة على طريقة بلاد الرافدين مع زيت الزيتون البكر",
+          en: "Silky Mesopotamian chickpea puree blended with artisanal tahini and extra-virgin olive oil"
+        },
+        price: 33,
+        calories: 620,
+        image: "https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["sesame"]
+      },
+      {
+        id: "hummus-prawns",
+        name: { ar: "حمص بالروبيان", en: "Hummus with Prawns" },
+        desc: {
+          ar: "حمص بالطحينة يعلوه روبيان متبل ومطهو بالزبدة والبهارات الخاصة",
+          en: "Creamy tahini hummus crowned with sautéed spiced prawns and herb butter"
+        },
+        price: 55,
+        calories: 851,
+        image: "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["sesame", "milk"]
+      },
+      {
+        id: "hummus-meat",
+        name: { ar: "حمص باللحمة", en: "Hummus with Meat" },
+        desc: {
+          ar: "حمص بالطحينة وزيت الزيتون مع مكعبات اللحم الطرية والمكسرات المحمصة",
+          en: "Velvety hummus topped with seared tender lamb cubes and toasted pine nuts"
+        },
+        price: 52,
+        calories: 864,
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["sesame", "nuts", "milk"]
+      },
+      {
+        id: "vine-leaves",
+        name: { ar: "ورق عنب", en: "Vine Leaves" },
+        desc: {
+          ar: "ورق عنب محشي بالأرز والأعشاب ودبس الرمان على طريقة بلاد الرافدين",
+          en: "Hand-rolled grape leaves stuffed with herbed rice and pomegranate molasses"
+        },
+        price: 35,
+        calories: 645,
+        image: "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk"]
+      },
+      {
+        id: "yogurt-salad",
+        name: { ar: "سلطة الزبادي", en: "Yogurt Salad" },
+        desc: {
+          ar: "لبن زبادي طازج مع الخيار المفروم والنعناع المجفف ولمسة ثوم خفيفة",
+          en: "Chilled creamy yogurt tossed with crisp diced cucumber and dried mint"
+        },
+        price: 25,
+        calories: 145,
+        image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk"]
+      },
+      {
+        id: "beetroot-hummus",
+        name: { ar: "حمص شمندر", en: "Beetroot Hummus" },
+        desc: {
+          ar: "حمص كريمي بالطحينة ممزوج بالشمندر المشوي وزيت الزيتون والجوز",
+          en: "Smooth tahini hummus infused with roasted ruby beetroot and olive oil"
+        },
+        price: 35,
+        calories: 450,
+        image: "https://images.unsplash.com/photo-1637949385162-e416fb15b2ce?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["sesame", "nuts"]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 3. المقبلات الساخنة | Hot Appetizers (8 Dishes)
+  // =========================================================================
+  {
+    id: "hot-appetizers",
+    order: 3,
+    name: { ar: "المقبلات الساخنة", en: "Hot Appetizers" },
+    subtitle: { ar: "كبة عراقية مقرمشة، بوريك، وأطباق ساخنة", en: "Golden Iraqi kubba, crispy borek & hot starters" },
+    thumbnail: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "spicy-potato",
+        name: { ar: "بطاطا حارة", en: "Spicy Potatoes" },
+        desc: {
+          ar: "مكعبات البطاطس المقلية المتبلة بالثوم والكزبرة الخضراء والفلفل الحار",
+          en: "Crispy potato cubes wok-tossed with garlic, fresh coriander, and red chili"
+        },
+        price: 29,
+        calories: 420,
+        image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["spicy"]
+      },
+      {
+        id: "chicken-liver",
+        name: { ar: "كبدة الدجاج", en: "Chicken Liver" },
+        desc: {
+          ar: "كبدة دجاج طازجة مطهوة مع البصل والبهارات وتقدم مع دبس الرمان",
+          en: "Pan-seared chicken livers glazed with tangy pomegranate molasses and warm spices"
+        },
+        price: 33,
+        calories: 577,
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "boiled-pacha",
+        name: { ar: "باجي مسلوق", en: "Boiled Pacha" },
+        desc: {
+          ar: "باجي عراقي تقليدي مسلوق ومطهو بعناية بالبهارات العطرية والليمون الأسود",
+          en: "Traditional slow-boiled Iraqi Pacha seasoned with aromatic spices and black lime"
+        },
+        price: 32,
+        calories: 380,
+        image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "rice-kubba",
+        name: { ar: "كبة أرز", en: "Rice Kubba" },
+        desc: {
+          ar: "كبة أرز حلب العراقية المقرمشة محشوة بلحم الغنم المفروم والكشمش واللوز",
+          en: "Golden crispy saffron rice kubba stuffed with spiced minced lamb, raisins, and almonds"
+        },
+        price: 33,
+        calories: 510,
+        image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts"]
+      },
+      {
+        id: "meat-kubba",
+        name: { ar: "كبة لحم", en: "Meat Kubba" },
+        desc: {
+          ar: "عجينة البرغل واللحم المقلية محشوة بلحم الغنم والمكسرات مع دبس الرمان",
+          en: "Crisp bulgur and meat shell filled with seasoned lamb and pine nuts, served with pomegranate molasses"
+        },
+        price: 39,
+        calories: 396,
+        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "nuts"]
+      },
+      {
+        id: "vegetable-borek",
+        name: { ar: "بوريك خضار", en: "Vegetable Borek" },
+        desc: {
+          ar: "رقائق البوريك العراقية المقرمشة المحشوة بالخضار المتبلة ببهارات بلاد الرافدين",
+          en: "Crisp Iraqi pastry rolls filled with Mesopotamian-spiced seasonal vegetables"
+        },
+        price: 32,
+        calories: 453,
+        image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "sesame"]
+      },
+      {
+        id: "meat-borek",
+        name: { ar: "بوريك لحم", en: "Meat Borek" },
+        desc: {
+          ar: "عجينة البوريك الذهبية المقرمشة المحشوة باللحم المفروم والبصل والبهارات العراقية",
+          en: "Flaky golden Iraqi borek stuffed with seasoned minced lamb and caramelized onions"
+        },
+        price: 34,
+        calories: 495,
+        image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "cheese-samosa",
+        name: { ar: "سمبوسة جبنة", en: "Cheese Samosa" },
+        desc: {
+          ar: "سمبوسة مقرمشة محشوة بخلطة الأجبان الغنية والنعناع الأخضر",
+          en: "Crispy golden samosa triangles filled with melted mozzarella cheese and fresh mint"
+        },
+        price: 32,
+        calories: 480,
+        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "milk"]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 4. السلطات | Salads (9 Dishes)
+  // =========================================================================
+  {
+    id: "salads",
+    order: 4,
+    name: { ar: "السلطات", en: "Salads" },
+    subtitle: { ar: "سلطات طازجة بتتبيلات دبس الرمان والأعشاب", en: "Crisp garden salads with signature dressings" },
+    thumbnail: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "quinoa-salad",
+        name: { ar: "سلطة الكينوا", en: "Quinoa Salad" },
+        desc: {
+          ar: "خليط من حبوب الكينوا والجرجير والشمندر والرمان مع صلصة الليمون وزيت الزيتون",
+          en: "Organic quinoa, baby rocket, roasted beetroot, and pomegranate with citrus dressing"
+        },
+        price: 45,
+        calories: 380,
+        image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts"]
+      },
+      {
+        id: "iraqi-eggplant-salad",
+        name: { ar: "سلطة الباذنجان العراقية", en: "Iraqi Eggplant Salad" },
+        desc: {
+          ar: "سلطة تقليدية من بلاد الرافدين مكونة من الباذنجان المقرمش والخضار مع دبس الرمان",
+          en: "Traditional Mesopotamian salad of golden crisp eggplant and fresh vegetables with pomegranate molasses"
+        },
+        price: 37,
+        calories: 342,
+        image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "fattoush-salad",
+        name: { ar: "سلطة الفتوش", en: "Fattoush Salad" },
+        desc: {
+          ar: "خليط من الخس والأعشاب والخبز المحمص والسماق مع صلصة دبس الرمان",
+          en: "Garden greens, herbs, and crispy toasted bread tossed in sumac and pomegranate molasses"
+        },
+        price: 34,
+        calories: 265,
+        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "tabbouleh",
+        name: { ar: "تبولة", en: "Tabbouleh" },
+        desc: {
+          ar: "بقدونس طازج مفروم ناعماً مع الطماطم والبرغل وعصير الليمون وزيت الزيتون",
+          en: "Finely chopped parsley, vine tomatoes, and fine bulgur dressed in lemon juice and olive oil"
+        },
+        price: 34,
+        calories: 222,
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "beetroot-salad",
+        name: { ar: "سلطة الشمندر", en: "Beetroot Salad" },
+        desc: {
+          ar: "شرائح الشمندر الممزوجة بالجرجير الطازج والجبن والجوز وصلصة الليمون",
+          en: "Ruby beetroot slices tossed with baby rocket, artisanal cheese, and citrus vinaigrette"
+        },
+        price: 32,
+        calories: 145,
+        image: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk", "nuts"]
+      },
+      {
+        id: "al-wadi-salad",
+        name: { ar: "سلطة الوادي", en: "Al-Wadi Salad" },
+        desc: {
+          ar: "تشكيلة غنية من الأوراق الخضراء والمكسرات المحمصة والفواكه المجففة بتتبيلة أغاتي الخاصة",
+          en: "Signature harvest greens tossed with roasted nuts, dried fruits, and Aghatti house dressing"
+        },
+        price: 39,
+        calories: 360,
+        image: "https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts", "milk"]
+      },
+      {
+        id: "corn-salad",
+        name: { ar: "سلطة ذرة", en: "Sweet Corn Salad" },
+        desc: {
+          ar: "حبات الذرة الحلوة مع الخضار المقرمشة والأعشاب والصلصة الكريمية بالليمون",
+          en: "Sweet golden corn kernels tossed with crisp garden vegetables and creamy citrus herb dressing"
+        },
+        price: 40,
+        calories: 510,
+        image: "https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk"]
+      },
+      {
+        id: "chicken-broccoli-salad",
+        name: { ar: "دجاج بالبروكلي", en: "Chicken Broccoli Salad" },
+        desc: {
+          ar: "قطع صدر الدجاج المشوي مع زهرات البروكلي الطازجة والذرة والصلصة الخاصة",
+          en: "Chargrilled chicken breast strips served over crisp broccoli florets and house dressing"
+        },
+        price: 44,
+        calories: 590,
+        image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk"]
+      },
+      {
+        id: "baba-ghanouj",
+        name: { ar: "بابا غنوج", en: "Baba Ghanouj" },
+        desc: {
+          ar: "باذنجان مشوي على الحطب مع الفليفلة الملونة والطماطم والرمان والجوز ودبس الرمان",
+          en: "Fire-roasted eggplant tossed with bell peppers, tomatoes, walnuts, and pomegranate molasses"
+        },
+        price: 35,
+        calories: 220,
+        image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts"]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 5. المشاوي | Charcoal Grills (6 Dishes)
+  // =========================================================================
+  {
+    id: "grills",
+    order: 5,
+    name: { ar: "المشاوي", en: "Charcoal Grills" },
+    subtitle: { ar: "مشويات عراقية أصيلة على الفحم الحي", en: "Authentic Iraqi skewers grilled over live charcoal" },
+    thumbnail: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "iraqi-kebab",
+        name: { ar: "كباب عراقي", en: "Iraqi Kebab" },
+        desc: {
+          ar: "لحم غنم طازج مفروم يدوياً بالدهن الحر مشوي على الفحم مع الطماطم والبصل والسماق",
+          en: "Hand-minced Iraqi lamb kebab grilled over glowing embers with charred tomatoes, sumac, and tannour bread"
+        },
+        price: 71,
+        calories: 999,
+        image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "lamb-tikka",
+        name: { ar: "تكة لحم", en: "Lamb Tikka" },
+        desc: {
+          ar: "أوصال لحم الغنم الطري المتبلة بالبهارات العراقية والمشوية على الفحم",
+          en: "Succulent cubes of marinated prime lamb tenderloin flame-grilled over charcoal"
+        },
+        price: 82,
+        calories: 892,
+        image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "boneless-grilled-chicken",
+        name: { ar: "دجاج مسحب مشوي على الفحم", en: "Boneless Charcoal Grilled Chicken" },
+        desc: {
+          ar: "دجاج مسحب متبل بالأعشاب والليمون مشوي على الفحم يقدم مع البطاطس والثومية",
+          en: "Charcoal-grilled marinated boneless chicken served with crispy fries and garlic toum"
+        },
+        price: 69,
+        calories: 863,
+        image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk", "wheat"]
+      },
+      {
+        id: "meat-arayes",
+        name: { ar: "عرايس لحم", en: "Meat Arayes" },
+        desc: {
+          ar: "خبز تنور محمص على الفحم ومحشو بلحم الغنم المتبل والطماطم والبقدونس",
+          en: "Charcoal-toasted flatbread stuffed with seasoned minced lamb, herbs, and spices"
+        },
+        price: 55,
+        calories: 814,
+        image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "milk"]
+      },
+      {
+        id: "chicken-tikka",
+        name: { ar: "تكة دجاج", en: "Chicken Tikka" },
+        desc: {
+          ar: "قطع صدر الدجاج المتبلة باللبن والثوم والليمون والمشوية على الجمر",
+          en: "Tender chicken breast cubes marinated in yogurt, garlic, and citrus, grilled over charcoal"
+        },
+        price: 72,
+        calories: 863,
+        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk", "wheat"]
+      },
+      {
+        id: "grilled-lamb-chops",
+        name: { ar: "ريش مشوية", en: "Grilled Lamb Chops" },
+        desc: {
+          ar: "ريش غنم بلدي طرية متبلة ومشوية على الفحم تقدم مع الخضار المشوية والبطاطس",
+          en: "Prime tender lamb cutlets flame-grilled over charcoal, served with roasted vegetables"
+        },
+        price: 105,
+        calories: 1330,
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 6. الأطباق الرئيسية | Main Courses (8 Dishes)
+  // =========================================================================
+  {
+    id: "mains",
+    order: 6,
+    name: { ar: "الأطباق الرئيسية", en: "Main Courses" },
+    subtitle: { ar: "المسكوف العراقي، القوزي، البرياني، والتبسي البغدادي", en: "Signature Iraqi Masgouf, Lamb Quzi, Biryani & Casseroles" },
+    thumbnail: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "masgouf",
+        name: { ar: "مسكوف", en: "Iraqi Masgouf" },
+        desc: {
+          ar: "سمك نهري طازج مشوي على حطب المشمش على الطريقة البغدادية يقدم مع الطرشي والخبز الحار",
+          en: "Fresh river carp slow-roasted beside an open apricot-wood fire, served with torshi pickles and hot tannour bread"
+        },
+        price: 165,
+        calories: 1840,
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "lamb-quzi",
+        name: { ar: "قوزي لحم", en: "Lamb Quzi" },
+        desc: {
+          ar: "موزة غنم مطهوة ببطء تقدم فوق التمن العراقي بالشعيرية والمكسرات مع المرق",
+          en: "Slow-braised tender lamb shank served over aromatic Iraqi rice with vermicelli, toasted nuts, and stew"
+        },
+        price: 97,
+        calories: 1270,
+        image: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts", "wheat", "milk"]
+      },
+      {
+        id: "chicken-biryani",
+        name: { ar: "برياني دجاج", en: "Chicken Biryani" },
+        desc: {
+          ar: "دجاج متبل بالبهارات العراقية يقدم مع أرز البرياني والشعيرية والزبيب واللوز",
+          en: "Iraqi-spiced roasted chicken over fragrant biryani rice with vermicelli, golden raisins, and almonds"
+        },
+        price: 74,
+        calories: 1140,
+        image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts", "wheat"]
+      },
+      {
+        id: "lamb-biryani",
+        name: { ar: "برياني لحم", en: "Lamb Biryani" },
+        desc: {
+          ar: "قطع لحم الغنم المطهوة ببطء على أرز البرياني العراقي المتبل بالشعيرية والمكسرات",
+          en: "Slow-cooked tender lamb served over spiced Iraqi biryani rice crowned with toasted nuts and raisins"
+        },
+        price: 87,
+        calories: 1240,
+        image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts", "wheat"]
+      },
+      {
+        id: "maqluba-lamb-eggplant",
+        name: { ar: "مقلوبة لحم باذنجان", en: "Eggplant Lamb Maqluba" },
+        desc: {
+          ar: "لحم غنم طري مطهو مع طبقات الباذنجان المقلي والأرز المبهر والمكسرات، يقدم مع اللبن",
+          en: "Tender lamb layered with caramelized eggplant and spiced rice, inverted and garnished with toasted nuts"
+        },
+        price: 89,
+        calories: 1320,
+        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts", "milk"]
+      },
+      {
+        id: "eggplant-tepsi",
+        name: { ar: "تبسي باذنجان", en: "Eggplant Tepsi" },
+        desc: {
+          ar: "شرائح الباذنجان والبطاطس والطماطم والفلفل المخبوزة بالفرن بصلصة الطماطم العراقية",
+          en: "Traditional Baghdadi oven-baked casserole of layered eggplant, potatoes, peppers, and rich tomato sauce"
+        },
+        price: 68,
+        calories: 780,
+        image: "https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "white-bean-stew",
+        name: { ar: "مرق فاصوليا", en: "White Bean Stew" },
+        desc: {
+          ar: "فاصوليا بيضاء مطهوة ببطء في صلصة الطماطم الغنية مع قطع لحم الغنم الطرية",
+          en: "Slow-simmered white beans in rich Iraqi tomato broth with tender lamb cubes"
+        },
+        price: 49,
+        calories: 450,
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "oven-meat-tepsi",
+        name: { ar: "تبسي لحم بالفرن", en: "Oven-Baked Meat Tepsi" },
+        desc: {
+          ar: "قطع لحم الغنم المخبوزة في الفرن مع البصل والطماطم والبطاطس والبهارات العراقية",
+          en: "Succulent lamb baked in the oven with tomatoes, onions, potatoes, and traditional Iraqi spices"
+        },
+        price: 68,
+        calories: 831,
+        image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 7. أطباق الولائم | Feast Platters (2 Dishes)
+  // =========================================================================
+  {
+    id: "feasts",
+    order: 7,
+    name: { ar: "أطباق الولائم", en: "Feast Platters" },
+    subtitle: { ar: "صواني ومناسف ملكية للجمعات والضيافة", en: "Grand royal banquet platters for sharing" },
+    thumbnail: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "aghatti-mixed-grill-platter",
+        name: { ar: "صحن مشاوى أغاتي", en: "Aghatti Mixed Grill Platter" },
+        desc: {
+          ar: "وليمة فاخرة من الكباب العراقي وتكة اللحم وتكة الدجاج والريش المشوية على الفحم مع المقبلات والخبز الحار",
+          en: "Grand charcoal grill platter featuring Iraqi kebab, lamb tikka, chicken tikka, and lamb chops with sides and hot bread"
+        },
+        price: 235,
+        calories: 3280,
+        image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "milk"]
+      },
+      {
+        id: "whole-lamb-feast",
+        name: { ar: "الخروف", en: "Whole Roasted Lamb Feast" },
+        desc: {
+          ar: "قوزي خروف كامل مطهو ببطء على الطريقة العراقية الملكية يقدم على تمن العنبر والمكسرات والزبيب والمرق",
+          en: "Whole slow-roasted royal Iraqi lamb Quzi served over fragrant amber rice, toasted nuts, golden raisins, and stews"
+        },
+        price: 2600,
+        calories: 18500,
+        image: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts", "wheat", "milk"]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 8. الأطباق الجانبية | Sides (4 Dishes)
+  // =========================================================================
+  {
+    id: "sides",
+    order: 8,
+    name: { ar: "الأطباق الجانبية", en: "Sides" },
+    subtitle: { ar: "تمن عراقي أصيل ومرافقات شهية", en: "Traditional Iraqi rice specialties & crispy sides" },
+    thumbnail: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "taman-baqilla",
+        name: { ar: "تمن باقيلاء", en: "Dill & Fava Bean Rice" },
+        desc: {
+          ar: "تمن عراقي مطهو مع الباقيلاء الخضراء والشبنت الطازج والدهن الحر",
+          en: "Aromatic Iraqi rice steamed with green fava beans, fresh dill, and clarified ghee"
+        },
+        price: 28,
+        calories: 451,
+        image: "https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk"]
+      },
+      {
+        id: "taman-biryani",
+        name: { ar: "تمن برياني", en: "Biryani Rice" },
+        desc: {
+          ar: "أرز برياني عراقي مبهر بالهيل والقرفة مع الشعيرية والمكسرات والزبيب",
+          en: "Spiced Iraqi biryani rice tossed with toasted vermicelli, almonds, and golden raisins"
+        },
+        price: 28,
+        calories: 468,
+        image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["nuts", "wheat"]
+      },
+      {
+        id: "taman-white",
+        name: { ar: "تمن أبيض", en: "White Amber Rice" },
+        desc: {
+          ar: "تمن عنبر عراقي أبيض فاخر مطهو على البخار برائحته الزكية المميزة",
+          en: "Steamed fragrant Iraqi Mishkhab white amber rice"
+        },
+        price: 15,
+        calories: 290,
+        image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "french-fries",
+        name: { ar: "بطاطا مقلية", en: "French Fries" },
+        desc: {
+          ar: "أصابع البطاطس الذهبية المقرمشة المملحة",
+          en: "Golden crispy french fries lightly seasoned with sea salt"
+        },
+        price: 16,
+        calories: 410,
+        image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 9. الحلويات | Desserts (6 Dishes)
+  // =========================================================================
+  {
+    id: "desserts",
+    order: 9,
+    name: { ar: "الحلويات", en: "Desserts" },
+    subtitle: { ar: "حلويات أغاتي الفاخرة بالقشطة والفستق الحلبي", en: "Signature Iraqi & oriental desserts with clotted cream" },
+    thumbnail: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "kunafa-tray",
+        name: { ar: "كنافة في الصينية", en: "Kunafa in Tray" },
+        desc: {
+          ar: "كنافة ذهبية مقرمشة مخبوزة في الصينية ومحشوة بالقشطة البلدي والفستق الحلبي والقطر",
+          en: "Oven-baked golden kunafa in a tray layered with rich cream, crushed pistachios, and rose syrup"
+        },
+        price: 39,
+        calories: 690,
+        image: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "milk", "nuts"]
+      },
+      {
+        id: "umm-ali",
+        name: { ar: "أم علي", en: "Umm Ali" },
+        desc: {
+          ar: "رقائق العجين المخبوزة بالحليب الدافئ والقشطة والمكسرات المحمصة والزبيب",
+          en: "Warm baked puff pastry soaked in sweet milk, clotted cream, and roasted nuts"
+        },
+        price: 39,
+        calories: 600,
+        image: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "milk", "nuts"]
+      },
+      {
+        id: "aish-al-saraya",
+        name: { ar: "عيش السرايا", en: "Aish Al-Saraya" },
+        desc: {
+          ar: "خبز السرايا المكرمل بماء الورد والقطر يعلوه القشطة الطازجة والفستق الحلبي",
+          en: "Caramelized blossom-syrup bread base topped with velvety clotted cream and pistachios"
+        },
+        price: 35,
+        calories: 466,
+        image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "milk", "nuts"]
+      },
+      {
+        id: "ghazalia",
+        name: { ar: "غزلية", en: "Ghazalia" },
+        desc: {
+          ar: "قشطة أغاتي الغنية مع الكريمة وتقدم مع غزل البنات الهش وصلصة الباشن فروت والفستق",
+          en: "Rich clotted cream and whipped cream crowned with spun cotton candy and passion fruit"
+        },
+        price: 35,
+        calories: 547,
+        image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk", "nuts"]
+      },
+      {
+        id: "aghatti-madkouka",
+        name: { ar: "مدكوكة أغاتي", en: "Aghatti Madkouka" },
+        desc: {
+          ar: "خليط التمر العراقي والجوز والسمسم المحمص بالهيل والمحشو بقشطة أغاتي الفاخرة",
+          en: "Traditional Iraqi date paste kneaded with toasted sesame, walnuts, and cardamom, stuffed with Aghatti clotted cream"
+        },
+        price: 35,
+        calories: 564,
+        image: "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk", "nuts", "sesame"]
+      },
+      {
+        id: "othmalieh",
+        name: { ar: "عثملية", en: "Othmalieh" },
+        desc: {
+          ar: "طبقتان من عجينة الكنافة المحمصة المقرمشة محشوة بقشطة أغاتي الطازجة والفستق",
+          en: "Crispy spun kunafa layers filled with fresh Aghatti clotted cream and pistachios"
+        },
+        price: 35,
+        calories: 200,
+        image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "milk", "nuts"]
+      }
+    ]
+  },
+
+  // =========================================================================
+  // 10. المشروبات والقهوة | Beverages & Coffee (23 Dishes)
+  // =========================================================================
+  {
+    id: "beverages",
+    order: 10,
+    name: { ar: "المشروبات والقهوة", en: "Beverages & Coffee" },
+    subtitle: { ar: "عصائر طبيعية، موكتيلات، مياه إيطالية، قهوة مختصة وشاي عراقي", en: "Fresh juices, mocktails, sparkling waters, coffee & Iraqi tea" },
+    thumbnail: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1200&q=90",
+    items: [
+      {
+        id: "carrot-juice",
+        name: { ar: "عصير جزر", en: "Fresh Carrot Juice" },
+        desc: { ar: "عصير جزر طبيعي طازج يحضر عند الطلب", en: "100% freshly pressed sweet carrot juice" },
+        price: 16,
+        calories: 165,
+        image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "green-apple-juice",
+        name: { ar: "تفاح أخضر", en: "Green Apple Juice" },
+        desc: { ar: "عصير تفاح أخضر طازج ومنعش", en: "Crisp cold-pressed green apple juice" },
+        price: 22,
+        calories: 181,
+        image: "https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "mixed-berry-mocktail",
+        name: { ar: "موكتيل توت مشكل", en: "Mixed Berry Mocktail" },
+        desc: { ar: "مزيج منعش من التوت البري والأحمر والأسود مع النعناع والليمون", en: "Refreshing blend of wild berries, fresh mint, and lime" },
+        price: 32,
+        calories: 358,
+        image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "blue-lagoon",
+        name: { ar: "بلو لاجون", en: "Blue Lagoon" },
+        desc: { ar: "موكتيل أغاتي التركوازي المنعش بالليمون والنعناع الطازج", en: "Signature turquoise citrus mocktail with lime and fresh mint" },
+        price: 30,
+        calories: 412,
+        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "mango-smoothie",
+        name: { ar: "سموذي مانجو", en: "Mango Smoothie" },
+        desc: { ar: "سموذي مانجو استوائي غني ومثلج", en: "Rich tropical ripe mango smoothie blended with ice" },
+        price: 30,
+        calories: 240,
+        image: "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "lemon-pomegranate",
+        name: { ar: "ليمون ورمان", en: "Lemon & Pomegranate" },
+        desc: { ar: "مزيج منعش من الليمون الطازج وعصير وحبات الرمان", en: "Zesty fresh lemon juice layered with ruby pomegranate" },
+        price: 32,
+        calories: 195,
+        image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "lemon-mint",
+        name: { ar: "ليمون نعناع", en: "Lemon Mint" },
+        desc: { ar: "عصير ليمون طازج مضروب مع أوراق النعناع الأخضر والثلج", en: "Freshly squeezed lemon blended with garden mint over crushed ice" },
+        price: 25,
+        calories: 170,
+        image: "https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "perfect-pineapple-mint",
+        name: { ar: "برفكت أناناس نعناع", en: "Perfect Pineapple Mint" },
+        desc: { ar: "أناناس طازج معصور مع أوراق النعناع المنعشة", en: "Sweet golden pineapple pressed with fresh mint leaves" },
+        price: 30,
+        calories: 145,
+        image: "https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "passion-fruit",
+        name: { ar: "باشن فروت", en: "Passion Fruit Mocktail" },
+        desc: { ar: "موكتيل فاكهة الباشن فروت الاستوائية مع الليمون والنعناع", en: "Exotic passion fruit mocktail with lime and fresh mint" },
+        price: 35,
+        calories: 190,
+        image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "soft-drinks",
+        name: { ar: "مشروبات غازية", en: "Soft Drinks" },
+        desc: { ar: "تشكيلة مشروبات غازية مثلجة", en: "Assorted chilled carbonated soft drinks" },
+        price: 12,
+        calories: 140,
+        image: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "sparkling-water-250",
+        name: { ar: "مياه فوارة 250 مل", en: "Sparkling Water 250ml" },
+        desc: { ar: "مياه معدنية غازية فوارة ومنعشة (250 مل)", en: "Chilled natural sparkling mineral water (250ml)" },
+        price: 15,
+        calories: 0,
+        image: "https://images.unsplash.com/photo-1559839914-17aae19cec71?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "san-pellegrino-lemon-250",
+        name: { ar: "سان بيليغرينو ليمون 250 مل", en: "San Pellegrino Lemon 250ml" },
+        desc: { ar: "مشروب سان بيليغرينو الإيطالي الفوار بنكهة الليمون الطبيعي (250 مل)", en: "Italian sparkling lemon beverage by San Pellegrino (250ml)" },
+        price: 22,
+        calories: 130,
+        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "san-pellegrino-pomegranate-250",
+        name: { ar: "سان بيليغرينو رمان 250 مل", en: "San Pellegrino Pomegranate 250ml" },
+        desc: { ar: "مشروب سان بيليغرينو الإيطالي الفوار بنكهة الرمان (250 مل)", en: "Italian sparkling pomegranate beverage by San Pellegrino (250ml)" },
+        price: 22,
+        calories: 135,
+        image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "mineral-water-330",
+        name: { ar: "مياه معدنية 330 مل", en: "Mineral Water 330ml" },
+        desc: { ar: "مياه معدنية نقية (330 مل)", en: "Pure natural mineral water (330ml)" },
+        price: 8,
+        calories: 0,
+        image: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "mineral-water-750",
+        name: { ar: "مياه معدنية 750 مل", en: "Mineral Water 750ml" },
+        desc: { ar: "مياه معدنية نقية حجم كبير (750 مل)", en: "Large pure natural mineral water (750ml)" },
+        price: 14,
+        calories: 0,
+        image: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "single-espresso",
+        name: { ar: "إسبريسو سينجل", en: "Single Espresso" },
+        desc: { ar: "جرعة غنية من قهوة الإسبريسو المختصة", en: "Rich single shot of specialty Arabica espresso" },
+        price: 9,
+        calories: 20,
+        image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "double-espresso",
+        name: { ar: "إسبريسو دبل", en: "Double Espresso" },
+        desc: { ar: "جرعة مزدوجة مركزة من الإسبريسو الفاخر", en: "Bold double shot of specialty espresso with golden crema" },
+        price: 14,
+        calories: 40,
+        image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "americano",
+        name: { ar: "أمريكانو", en: "Americano" },
+        desc: { ar: "إسبريسو مزدوج مخفف بالماء الساخن", en: "Smooth double espresso lengthened with hot water" },
+        price: 20,
+        calories: 40,
+        image: "https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "cappuccino",
+        name: { ar: "كابتشينو", en: "Cappuccino" },
+        desc: { ar: "إسبريسو غني مع حليب مبخر ورغوة كثيفة", en: "Classic espresso balanced with steamed milk and velvety foam" },
+        price: 23,
+        calories: 140,
+        image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk"]
+      },
+      {
+        id: "cafe-latte",
+        name: { ar: "كافيه لاتيه", en: "Cafe Latte" },
+        desc: { ar: "إسبريسو ناعم ممزوج بالحليب المبخر الكريمي", en: "Silky steamed milk poured over specialty espresso" },
+        price: 23,
+        calories: 190,
+        image: "https://images.unsplash.com/photo-1561882468-9110e03e0f78?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk"]
+      },
+      {
+        id: "turkish-coffee",
+        name: { ar: "قهوة تركي", en: "Turkish Coffee" },
+        desc: { ar: "قهوة تركية مطحونة ناعماً ومحضرة على نار هادئة بوجه غني", en: "Finely ground traditional Turkish coffee slow-brewed with rich foam" },
+        price: 18,
+        calories: 20,
+        image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "iraqi-tea",
+        name: { ar: "شاي عراقي", en: "Iraqi Cardamom Tea" },
+        desc: { ar: "شاي عراقي أسود مخدر على الفحم ومهيل بالهيل الأصلي يقدم في استكان", en: "Charcoal-steeped Iraqi black tea infused with cardamom, served in an istikan" },
+        price: 13,
+        calories: 5,
+        image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
+        id: "green-tea-mint",
+        name: { ar: "شاي أخضر بالنعناع", en: "Green Tea with Mint" },
+        desc: { ar: "شاي أخضر طبيعي مع أوراق النعناع الطازجة", en: "Refreshing whole-leaf green tea steeped with fresh mint" },
+        price: 13,
+        calories: 2,
+        image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      }
+    ]
+  }
+];
+
+    let lang = 'ar';
+    let currentCatIndex = 0;
+    let currentSlideIndex = 0;
+    let isInsideCategory = false;
+
+    function normalizeText(str) {
+      return String(str || '')
+        .toLowerCase()
+        .replace(/[أإآ]/g, 'ا')
+        .replace(/ة/g, 'ه')
+        .replace(/ى/g, 'ي')
+        .trim();
+    }
+
+    // Set REQUIRE_QR_LOCK = true to re-enable the QR lock screen requirement (?qr=valid)
+    const REQUIRE_QR_LOCK = false;
+
+    function checkQRAccess() {
+      const params = new URLSearchParams(window.location.search);
+      const isValid = !REQUIRE_QR_LOCK || params.get('qr') === 'valid' || sessionStorage.getItem('aghatti_qr') === 'true';
+      const table = String(params.get('t') || sessionStorage.getItem('aghatti_table') || '01').padStart(2, '0');
+      sessionStorage.setItem('aghatti_table', table);
+      document.getElementById('tableBadge').textContent = lang === 'ar' ? `طاولة #${table}` : `Table #${table}`;
+      if (!isValid) {
+        document.getElementById('qrLockScreen').classList.add('visible');
+      } else {
+        sessionStorage.setItem('aghatti_qr', 'true');
+        document.getElementById('qrLockScreen').classList.remove('visible');
+      }
+    }
+
+    function unlockDemo() {
+      sessionStorage.setItem('aghatti_qr', 'true');
+      document.getElementById('qrLockScreen').classList.remove('visible');
+    }
+
+    function attach3DTilt(selector) {
+      document.querySelectorAll(selector).forEach(card => {
+        card.addEventListener('pointermove', e => {
+          const r = card.getBoundingClientRect();
+          const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+          const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+          card.style.transform = `perspective(800px) rotateX(${(-ny * 7).toFixed(2)}deg) rotateY(${(nx * 7).toFixed(2)}deg) scale3d(1.02,1.02,1.02)`;
+        });
+        card.addEventListener('pointerleave', () => {
+          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+        });
+      });
+    }
+
+    // =========================================================================
+    // 1. Live Search Bar & Instant Dish Jump + Lightbox
+    // =========================================================================
+    function handleLiveSearch(rawQuery) {
+      const dropdown = document.getElementById('searchResultsDropdown');
+      const clearBtn = document.getElementById('searchClearBtn');
+      const q = normalizeText(rawQuery);
+
+      if (!q) {
+        dropdown.classList.remove('open');
+        clearBtn.classList.remove('visible');
+        dropdown.innerHTML = '';
+        return;
+      }
+
+      clearBtn.classList.add('visible');
+      const matches = [];
+
+      MENU_DATA.forEach((cat, catIdx) => {
+        const catBlob = normalizeText(`${cat.name.ar} ${cat.name.en} ${cat.subtitle.ar} ${cat.subtitle.en}`);
+        cat.items.forEach((item, dishIdx) => {
+          const itemBlob = normalizeText(`${item.name.ar} ${item.name.en} ${item.desc.ar} ${item.desc.en}`);
+          if (itemBlob.includes(q) || catBlob.includes(q)) {
+            matches.push({ cat, catIdx, item, dishIdx });
+          }
+        });
+      });
+
+      if (matches.length === 0) {
+        dropdown.innerHTML = `
+          <div style="padding:16px; text-align:center; font-size:12.5px; color:var(--text-muted);">
+            ${lang === 'ar' ? 'لا توجد أطباق مطابقة لبحثك' : 'No matching dishes found'}
+          </div>
+        `;
+      } else {
+        dropdown.innerHTML = matches.map(m => {
+          const calText = (m.item.calories !== undefined && m.item.calories > 0)
+            ? `${m.item.calories} cal`
+            : '';
+          const priceText = lang === 'ar' ? `${m.item.price} ر.س` : `${m.item.price} SAR`;
+          return `
+            <button type="button" class="search-result-row" onclick="selectSearchResult(${m.catIdx}, ${m.dishIdx})">
+              <div class="search-row-left">
+                <div class="search-row-title">
+                  <span>${m.item.name.ar}</span>
+                  <span class="search-row-en">• ${m.item.name.en}</span>
+                </div>
+                <span class="search-cat-tag">${m.cat.name.ar} | ${m.cat.name.en}</span>
+              </div>
+              <div class="search-row-right">
+                ${calText ? `<span class="search-row-cal">${calText}</span>` : ''}
+                <span class="search-row-price">${priceText}</span>
+              </div>
+            </button>
+          `;
+        }).join('');
+      }
+
+      dropdown.classList.add('open');
+    }
+
+    function clearLiveSearch() {
+      const input = document.getElementById('liveSearchInput');
+      input.value = '';
+      document.getElementById('searchResultsDropdown').classList.remove('open');
+      document.getElementById('searchClearBtn').classList.remove('visible');
+    }
+
+    function selectSearchResult(catIdx, dishIdx) {
+      clearLiveSearch();
+      goToCategoryAndDish(catIdx, dishIdx, true);
+    }
+
+    // =========================================================================
+    // 2. Comprehensive Text-Only Master Menu View ("القائمة الشاملة / Full Index")
+    // =========================================================================
+    function renderFullIndexModal() {
+      document.getElementById('fullIndexTitle').textContent = lang === 'ar'
+        ? 'القائمة الشاملة • Full Master Index'
+        : 'Full Master Menu Index • القائمة الشاملة';
+      document.getElementById('fullIndexSub').textContent = lang === 'ar'
+        ? 'اضغط على أي طبق للانتقال الفوري إلى صورته داخل القوس التفاعلي'
+        : 'Tap any dish row to jump directly to its photo in the Center Arch Carousel';
+
+      // Quick category jump strip inside drawer
+      const strip = document.getElementById('fullIndexCatStrip');
+      strip.innerHTML = MENU_DATA.map((cat, idx) => `
+        <button type="button" class="index-jump-chip" onclick="scrollToIndexCategory('index-cat-${idx}')">
+          ${lang === 'ar' ? cat.name.ar : cat.name.en} (${cat.items.length})
+        </button>
+      `).join('');
+
+      // Pure text-only master list (NO images)
+      const setPriceUnit = lang === 'ar' ? '115 ر.س' : '115 SAR';
+      const setBlockHtml = `
+        <div class="index-category-block">
+          <div class="index-cat-heading">
+            <span>✦ ${SET_MENU_DATA.title.ar}</span>
+            <span style="font-size:12px; color:var(--light-blue);">${setPriceUnit}</span>
+          </div>
+          <button type="button" class="index-text-row" onclick="closeFullIndexModal(); openSetMenuModal();">
+            <div>
+              <span class="index-dish-name">${lang === 'ar' ? 'قائمة الغداء المتكاملة (5 مراحل)' : 'Complete 5-Course Lunch Set Menu'}</span>
+              <span class="index-dish-name-sub">• ${SET_MENU_DATA.subtitle[lang]}</span>
+            </div>
+            <span class="index-leader-dots"></span>
+            <div class="index-meta-group">
+              <span class="index-dish-price">${setPriceUnit}</span>
+            </div>
+          </button>
+        </div>
+      `;
+
+      const catsHtml = MENU_DATA.map((cat, catIdx) => {
+        const rows = cat.items.map((item, dishIdx) => {
+          const calText = (item.calories !== undefined && item.calories > 0)
+            ? `${item.calories} cal`
+            : '';
+          const priceText = lang === 'ar' ? `${item.price} ر.س` : `${item.price} SAR`;
+          return `
+            <button type="button" class="index-text-row" onclick="goToCategoryAndDish(${catIdx}, ${dishIdx}, false)">
+              <div>
+                <span class="index-dish-name">${item.name.ar}</span>
+                <span class="index-dish-name-sub">${item.name.en}</span>
+              </div>
+              <span class="index-leader-dots"></span>
+              <div class="index-meta-group">
+                ${calText ? `<span class="index-dish-cal">${calText}</span>` : ''}
+                <span class="index-dish-price">${priceText}</span>
+              </div>
+            </button>
+          `;
+        }).join('');
+
+        return `
+          <div class="index-category-block" id="index-cat-${catIdx}">
+            <div class="index-cat-heading">
+              <span>${String(cat.order).padStart(2, '0')}. ${cat.name.ar} | ${cat.name.en}</span>
+              <span style="font-size:11.5px; color:var(--light-blue);">${cat.items.length} ${lang === 'ar' ? 'أطباق' : 'Dishes'}</span>
+            </div>
+            ${rows}
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('fullIndexBody').innerHTML = setBlockHtml + catsHtml;
+    }
+
+    function scrollToIndexCategory(elId) {
+      const el = document.getElementById(elId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function openFullIndexModal() {
+      clearLiveSearch();
+      renderFullIndexModal();
+      document.getElementById('fullIndexModal').classList.add('open');
+    }
+
+    function closeFullIndexModal() {
+      document.getElementById('fullIndexModal').classList.remove('open');
+    }
+
+    // Interactive Jump to Dish Photo in Center Arch Carousel
+    function goToCategoryAndDish(catIdx, dishIdx, openLightboxAfter = false) {
+      closeFullIndexModal();
+      clearLiveSearch();
+      currentCatIndex = catIdx;
+      currentSlideIndex = dishIdx;
+      isInsideCategory = true;
+
+      document.getElementById('portalHubView').classList.add('hidden');
+      const showcase = document.getElementById('dishShowcaseView');
+      showcase.classList.remove('active');
+      void showcase.offsetWidth;
+      showcase.classList.add('active');
+      document.getElementById('backToCategoriesBtn').classList.add('visible');
+
+      renderCarousel();
+      if (openLightboxAfter) {
+        openDishLightbox(dishIdx);
+      }
+    }
+
+    // =========================================================================
+    // Space-Age Category Portal Hub (All 10 Categories + Set Menu)
+    // =========================================================================
+    function renderCategoryHub() {
+      const totalDishes = MENU_DATA.reduce((sum, c) => sum + c.items.length, 0);
+      document.getElementById('hubIntroBadge').textContent = lang === 'ar'
+        ? `✦ بوابة الأقسام الفضائية • 10 أقسام • ${totalDishes} طبقاً فاخراً`
+        : `✦ Space-Age Category Portal • 10 Categories • ${totalDishes} Dishes`;
+      document.getElementById('hubMainTitle').textContent = lang === 'ar'
+        ? 'منيو أغاتي للمأكولات العراقية الفاخرة'
+        : 'Aghatti Luxury Iraqi Gastronomy Menu';
+      document.getElementById('setMenuTopBtn').textContent = lang === 'ar'
+        ? '✦ قائمة الغداء 115 ر.س'
+        : '✦ Set Menu 115 SAR';
+      document.getElementById('fullIndexBtnLabel').textContent = lang === 'ar'
+        ? 'القائمة الشاملة / Full Index'
+        : 'Full Index / القائمة الشاملة';
+      document.getElementById('liveSearchInput').placeholder = lang === 'ar'
+        ? 'ابحث بالاسم أو القسم... / Search menu...'
+        : 'Search dish or category... / ابحث في المنيو';
+      document.getElementById('setMenuCardTitle').textContent = SET_MENU_DATA.title[lang];
+      document.getElementById('setMenuCardSub').textContent = SET_MENU_DATA.subtitle[lang];
+
+      const grid = document.getElementById('categoriesHubGrid');
+      grid.innerHTML = MENU_DATA.map((cat, idx) => {
+        const floatClass = idx % 2 === 0 ? 'holo-cat-wrap-even' : 'holo-cat-wrap-odd';
+        const delay = (idx * 0.22).toFixed(2);
+        const countLabel = lang === 'ar' ? `${cat.items.length} أطباق` : `${cat.items.length} Dishes`;
+        return `
+          <div class="${floatClass}" style="animation-delay:${delay}s;">
+            <article class="holo-cat-card" onclick="enterCategoryShowcase(${idx})" role="button" tabindex="0">
+              <div class="holo-cat-top">
+                <span class="holo-cat-num">${String(cat.order).padStart(2, '0')}</span>
+                <span class="holo-cat-count">${countLabel}</span>
+              </div>
+              <div class="holo-cat-arch">
+                <img src="${cat.thumbnail}" alt="${cat.name.ar} | ${cat.name.en}" loading="eager" />
+              </div>
+              <div>
+                <div class="holo-cat-name-ar">${cat.name.ar}</div>
+                <div class="holo-cat-name-en">${cat.name.en}</div>
+              </div>
+            </article>
+          </div>
+        `;
+      }).join('');
+
+      attach3DTilt('.holo-cat-card');
+    }
+
+    function openCategoryHub() {
+      isInsideCategory = false;
+      document.getElementById('portalHubView').classList.remove('hidden');
+      document.getElementById('dishShowcaseView').classList.remove('active');
+      document.getElementById('backToCategoriesBtn').classList.remove('visible');
+      renderCategoryHub();
+    }
+
+    function enterCategoryShowcase(catIdx) {
+      goToCategoryAndDish(catIdx, 0, false);
+    }
+
+    // =========================================================================
+    // Anti-Gravity Dish Showcase Inside Selected Category
+    // =========================================================================
+    function renderCarousel() {
+      const cat = MENU_DATA[currentCatIndex];
+      const items = cat.items;
+      const total = items.length;
+      const track = document.getElementById('carouselTrack');
+
+      document.getElementById('stageCategoryTitle').textContent = `${cat.name.ar} | ${cat.name.en}`;
+      document.getElementById('stageSlideCounter').textContent = `${currentSlideIndex + 1} / ${total}`;
+
+      track.innerHTML = items.map((item, idx) => {
+        let stateClass = 'hidden';
+        if (idx === currentSlideIndex) stateClass = 'active';
+        else if (idx === (currentSlideIndex - 1 + total) % total) stateClass = 'prev';
+        else if (idx === (currentSlideIndex + 1) % total) stateClass = 'next';
+
+        return `
+          <div class="dish-slide ${stateClass}" onclick="handleSlideTap(${idx})" role="button" tabindex="0">
+            <img src="${item.image}" alt="${item.name.ar} - ${item.name.en}" loading="eager" />
+          </div>
+        `;
+      }).join('');
+
+      const activeItem = items[currentSlideIndex];
+      const infoBox = document.getElementById('dishInfoContent');
+      infoBox.classList.remove('info-fade');
+      void infoBox.offsetWidth;
+      infoBox.classList.add('info-fade');
+
+      document.getElementById('dishTitleAr').textContent = activeItem.name.ar;
+      document.getElementById('dishTitleEn').textContent = activeItem.name.en;
+      document.getElementById('dishDesc').textContent = activeItem.desc[lang];
+      document.getElementById('dishPrice').textContent = lang === 'ar'
+        ? `${activeItem.price} ر.س`
+        : `${activeItem.price} SAR`;
+
+      const calEl = document.getElementById('dishCal');
+      if (activeItem.calories !== undefined && activeItem.calories > 0) {
+        calEl.style.display = 'inline-block';
+        calEl.textContent = `${activeItem.calories} cal`;
+      } else {
+        calEl.style.display = 'none';
+      }
+
+      document.getElementById('inspectDishBtn').textContent = lang === 'ar'
+        ? 'تكبير الصورة والتفاصيل ✦'
+        : 'Full View & Details ✦';
+
+      const alRow = document.getElementById('dishAllergensRow');
+      if (activeItem.allergens && activeItem.allergens.length > 0) {
+        alRow.innerHTML = activeItem.allergens.map(al => {
+          const meta = ALLERGEN_LABELS[al];
+          if (!meta) return '';
+          return `<span class="allergen-badge">${meta.icon} ${meta.ar} • ${meta.en}</span>`;
+        }).join('');
+      } else {
+        alRow.innerHTML = `<span class="allergen-clean">${lang === 'ar' ? '✓ خالٍ من مسببات الحساسية الشائعة' : '✓ Free from common allergens'}</span>`;
+      }
+
+      document.getElementById('dotsContainer').innerHTML = items.map((_, idx) => `
+        <span class="dot ${idx === currentSlideIndex ? 'active' : ''}" onclick="goToSlide(${idx})"></span>
+      `).join('');
+    }
+
+    function handleSlideTap(idx) {
+      if (idx === currentSlideIndex) {
+        openDishLightbox(idx);
+      } else {
+        goToSlide(idx);
+      }
+    }
+
+    function nextSlide() {
+      const total = MENU_DATA[currentCatIndex].items.length;
+      currentSlideIndex = (currentSlideIndex + 1) % total;
+      renderCarousel();
+    }
+
+    function prevSlide() {
+      const total = MENU_DATA[currentCatIndex].items.length;
+      currentSlideIndex = (currentSlideIndex - 1 + total) % total;
+      renderCarousel();
+    }
+
+    function goToSlide(idx) {
+      currentSlideIndex = idx;
+      renderCarousel();
+    }
+
+    function toggleLang() {
+      lang = lang === 'ar' ? 'en' : 'ar';
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langToggle').textContent = lang === 'ar' ? 'EN' : 'عربي';
+      checkQRAccess();
+      renderCategoryHub();
+      if (isInsideCategory) {
+        renderCarousel();
+      }
+    }
+
+    // =========================================================================
+    // Set Menu Modal (115 SAR) & Full-View Dish Lightbox
+    // =========================================================================
+    function openSetMenuModal() {
+      document.getElementById('setModalHeading').textContent = SET_MENU_DATA.title[lang];
+      document.getElementById('setModalSubtitle').textContent = SET_MENU_DATA.subtitle[lang];
+      document.getElementById('setMenuCoursesList').innerHTML = SET_MENU_DATA.courses.map(c => `
+        <div class="course-step-card">
+          <span class="course-step-num">${c.step}</span>
+          <div>
+            <div style="font-size:14px; font-weight:900; color:#fff; margin-bottom:2px;">
+              ${c.title.ar} • ${c.title.en}
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); line-height:1.5;">
+              ${c.detail[lang]}
+            </div>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('setMenuModal').classList.add('open');
+    }
+
+    function closeSetMenuModal() {
+      document.getElementById('setMenuModal').classList.remove('open');
+    }
+
+    function openDishLightbox(idx = currentSlideIndex) {
+      const item = MENU_DATA[currentCatIndex].items[idx];
+      if (!item) return;
+      document.getElementById('lightboxImg').src = item.image;
+      document.getElementById('lightboxImg').alt = item.name.ar;
+      document.getElementById('lightboxTitleAr').textContent = item.name.ar;
+      document.getElementById('lightboxTitleEn').textContent = item.name.en;
+      document.getElementById('lightboxDescAr').textContent = item.desc.ar;
+      document.getElementById('lightboxDescEn').textContent = item.desc.en;
+      document.getElementById('lightboxPrice').textContent = `${item.price} ر.س • SAR`;
+
+      const calEl = document.getElementById('lightboxCal');
+      if (item.calories !== undefined && item.calories > 0) {
+        calEl.style.display = 'inline-block';
+        calEl.textContent = `${item.calories} cal`;
+      } else {
+        calEl.style.display = 'none';
+      }
+
+      const alContainer = document.getElementById('lightboxAllergens');
+      if (item.allergens && item.allergens.length > 0) {
+        alContainer.innerHTML = item.allergens.map(al => {
+          const m = ALLERGEN_LABELS[al];
+          return m ? `<span class="allergen-badge">${m.icon} ${m.ar} • ${m.en}</span>` : '';
+        }).join('');
+      } else {
+        alContainer.innerHTML = `<span class="allergen-clean">✓ خالٍ من مسببات الحساسية الشائعة</span>`;
+      }
+
+      document.getElementById('dishLightbox').classList.add('open');
+    }
+
+    function closeDishLightbox() {
+      document.getElementById('dishLightbox').classList.remove('open');
+    }
+
+    // Close search dropdown when clicking outside command-bar
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.command-bar')) {
+        document.getElementById('searchResultsDropdown').classList.remove('open');
+      }
+    });
+
+    // Touch-Swipe & Wheel/Trackpad Support on Arch Stage
+    let touchStartX = 0;
+    const swipeArea = document.getElementById('swipeArea');
+    swipeArea.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    swipeArea.addEventListener('touchend', e => {
+      const diff = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(diff) > 36) {
+        if (lang === 'ar') { diff > 0 ? nextSlide() : prevSlide(); }
+        else { diff < 0 ? nextSlide() : prevSlide(); }
+      }
+    }, { passive: true });
+
+    let wheelLock = false;
+    swipeArea.addEventListener('wheel', e => {
+      e.preventDefault();
+      if (wheelLock) return;
+      const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(d) < 12) return;
+      wheelLock = true;
+      d > 0 ? nextSlide() : prevSlide();
+      setTimeout(() => { wheelLock = false; }, 380);
+    }, { passive: false });
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeFullIndexModal();
+        closeSetMenuModal();
+        closeDishLightbox();
+        clearLiveSearch();
+      } else if (isInsideCategory && e.key === 'ArrowLeft') {
+        lang === 'ar' ? nextSlide() : prevSlide();
+      } else if (isInsideCategory && e.key === 'ArrowRight') {
+        lang === 'ar' ? prevSlide() : nextSlide();
+      }
+    });
+
+    // Floating Ambient Star-Particles in Turquoise (#1ECAD3) & Light Blue (#63D2FF)
+    (function initCosmicParticles() {
+      const canvas = document.getElementById('starParticles');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+      const palette = ['#1ECAD3', '#63D2FF', '#FFFFFF'];
+      const stars = Array.from({ length: 95 }, (_, i) => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 0.7 + Math.random() * 1.7,
+        vy: -0.12 - Math.random() * 0.25,
+        vx: (Math.random() - 0.5) * 0.12,
+        color: palette[i % palette.length],
+        phase: Math.random() * Math.PI * 2
+      }));
+      function draw(t) {
+        ctx.clearRect(0, 0, w, h);
+        for (const s of stars) {
+          s.y += s.vy;
+          s.x += s.vx;
+          if (s.y < -8) s.y = h + 8;
+          if (s.x < -8) s.x = w + 8;
+          if (s.x > w + 8) s.x = -8;
+          ctx.beginPath();
+          ctx.fillStyle = s.color;
+          ctx.globalAlpha = 0.28 + 0.52 * Math.sin(t * 0.002 + s.phase);
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    })();
+
+    // Boot
+    checkQRAccess();
+    renderCategoryHub();
+  </script>
+</body>
+</html>

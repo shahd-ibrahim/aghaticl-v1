@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aghatti | مولد باركود الطاولات (QR Generator)</title>
+  <meta name="description" content="بوابة توليد وطباعة رموز الباركود لطاولات مطعم أغاتي للمأكولات العراقية (طاولة 1 إلى 20)." />
+  <meta name="theme-color" content="#070A0E" />
+  <link rel="icon" type="image/png" href="./brand/logo-outline.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070A0E;
+      --bg-card: #0E131A;
+      --turquoise: #00ACC8;
+      --light-blue: #5CC5D8;
+      --brand-gold: #8B6F4C;
+      --border-glow: rgba(0, 172, 200, 0.38);
+      --text-main: #F5F8FA;
+      --text-muted: #98A4B3;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: radial-gradient(circle at 50% 0%, #101C26 0%, var(--bg-dark) 70%);
+      color: var(--text-main);
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      padding: 28px 20px 60px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 24px;
+      background: rgba(14, 19, 26, 0.9);
+      border: 1.5px solid var(--border-glow);
+      border-radius: 22px;
+      margin-bottom: 28px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    .brand-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-head img {
+      height: 56px;
+      width: auto;
+      filter: url(#aghattiOutlineCrisp) drop-shadow(0 0 8px rgba(0, 172, 200, 0.45));
+    }
+
+    .brand-head h1 {
+      font-size: 21px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .brand-head p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      background: rgba(0, 172, 200, 0.12);
+      border: 1px solid var(--border-glow);
+      color: var(--light-blue);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn:hover,
+    .btn.primary {
+      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
+      color: #06090D;
+      border-color: transparent;
+      box-shadow: 0 0 18px rgba(0, 172, 200, 0.35);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+      gap: 20px;
+    }
+
+    .qr-card {
+      background: linear-gradient(180deg, #101822 0%, #0A0E14 100%);
+      border: 1.5px solid var(--border-glow);
+      border-radius: 26px;
+      padding: 20px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .qr-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--turquoise);
+    }
+
+    .card-logo {
+      height: 52px;
+      width: auto;
+      margin-bottom: 8px;
+      filter: url(#aghattiMainDark) drop-shadow(0 0 10px rgba(0, 172, 200, 0.35));
+    }
+
+    .table-pill {
+      background: rgba(0, 172, 200, 0.16);
+      border: 1px solid var(--turquoise);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 3px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .qr-box {
+      background: #FFFFFF;
+      padding: 12px;
+      border-radius: 16px;
+      width: 168px;
+      height: 168px;
+      margin-bottom: 10px;
+      box-shadow: 0 0 20px rgba(0, 172, 200, 0.22);
+    }
+
+    .qr-box svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .scan-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .open-link {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--light-blue);
+      text-decoration: none;
+      direction: ltr;
+    }
+
+    .open-link:hover {
+      text-decoration: underline;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+        padding: 0;
+      }
+      .top-bar, .open-link {
+        display: none !important;
+      }
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .qr-card {
+        background: #070A0E !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
+    <defs>
+      <filter id="aghattiOutlineCrisp" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feMorphology in="SourceGraphic" operator="dilate" radius="0.35" result="dilated" />
+        <feComponentTransfer in="dilated">
+          <feFuncA type="linear" slope="4.8" intercept="0" />
+        </feComponentTransfer>
+      </filter>
+      <filter id="aghattiMainDark" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          1.15  0     0     0  0.04
+          0     1.12  0     0  0.03
+          0     0     1.10  0  0.02
+         -1.85 -0.65 -1.85  0  4.25
+        " />
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="container">
+    <header class="top-bar">
+      <div class="brand-head">
+        <img src="./brand/logo-outline.png" alt="Aghatti Outline Logo" />
+        <div>
+          <h1>بوابة رموز باركود الطاولات — مطعم أغاتي</h1>
+          <p>رموز QR جاهزة للطباعة للطاولات من 01 إلى 20 (`?qr=valid&t=1..20`)</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a href="./index.html?qr=valid&t=1" class="btn">← العودة للمنيو التفاعلي</a>
+        <button type="button" class="btn primary" onclick="window.print()">🖨 طباعة جميع الطاولات (1 - 20)</button>
+      </div>
+    </header>
+
+    <main id="qrCardsGrid" class="grid"></main>
+  </div>
+
+  <script>
+    function generateTableQRSVG(text) {
+      const size = 21;
+      const grid = Array.from({ length: size }, () => Array(size).fill(false));
+
+      function drawFinder(r0, c0) {
+        for (let r = 0; r < 7; r++) {
+          for (let c = 0; c < 7; c++) {
+            const border = r === 0 || r === 6 || c === 0 || c === 6;
+            const inner = r >= 2 && r <= 4 && c >= 2 && c <= 4;
+            if (border || inner) grid[r0 + r][c0 + c] = true;
+          }
+        }
+      }
+      drawFinder(0, 0);
+      drawFinder(0, size - 7);
+      drawFinder(size - 7, 0);
+
+      for (let i = 8; i < size - 8; i++) {
+        grid[6][i] = i % 2 === 0;
+        grid[i][6] = i % 2 === 0;
+      }
+
+      let hash = 2166136261;
+      for (let i = 0; i < text.length; i++) {
+        hash ^= text.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+
+      for (let r = 0; r < size; r++) {
+        for (let c = 0; c < size; c++) {
+          const inFinder =
+            (r < 8 && c < 8) ||
+            (r < 8 && c >= size - 8) ||
+            (r >= size - 8 && c < 8) ||
+            r === 6 || c === 6;
+          if (!inFinder) {
+            hash ^= (r * 31 + c * 17) & 0xff;
+            hash = Math.imul(hash, 16777619);
+            grid[r][c] = (Math.abs(hash) % 10) < 5;
+          }
+        }
+      }
+
+      let rects = '';
+      for (let r = 0; r < size; r++) {
+        for (let c = 0; c < size; c++) {
+          if (grid[r][c]) {
+            const fill = ((r < 7 && c < 7) || (r < 7 && c >= size - 7) || (r >= size - 7 && c < 7))
+              ? '#070A0E'
+              : '#007C92';
+            rects += `<rect x="${c + 1}" y="${r + 1}" width="0.92" height="0.92" rx="0.2" fill="${fill}" />`;
+          }
+        }
+      }
+      return `<svg viewBox="0 0 ${size + 2} ${size + 2}" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
+    }
+
+    function renderAllTables() {
+      const container = document.getElementById('qrCardsGrid');
+      const cards = [];
+      for (let t = 1; t <= 20; t++) {
+        const padded = String(t).padStart(2, '0');
+        const relUrl = `./index.html?qr=valid&t=${t}`;
+        const svg = generateTableQRSVG(relUrl);
+        cards.push(`
+          <article class="qr-card">
+            <img src="./brand/logo-main.png" alt="Aghatti" class="card-logo" />
+            <span class="table-pill">طاولة #${padded} • Table #${padded}</span>
+            <div class="qr-box">${svg}</div>
+            <p class="scan-caption">امسح الرمز لتصفح منيو أغاتي التفاعلي</p>
+            <a class="open-link" href="${relUrl}">?qr=valid&amp;t=${t} ↗</a>
+          </article>
+        `);
+      }
+      container.innerHTML = cards.join('');
+    }
+
+    renderAllTables();
+  </script>
+</body>
+</html>
+
