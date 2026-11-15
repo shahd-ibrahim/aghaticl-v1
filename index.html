@@ -3,32 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Aghatti | منيو أغاتي التفاعلي</title>
-  <meta name="description" content="منيو مطعم أغاتي للمأكولات العراقية الفاخرة — بوابة الأقسام الفضائية، البحث الفوري، والقائمة الشاملة (Cosmic Gastronomy QR Menu)." />
-  <meta name="theme-color" content="#070A0E" />
-
-  <!-- OpenGraph Metadata -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Aghatti | منيو أغاتي التفاعلي" />
-  <meta property="og:description" content="استكشف أكثر من 75 طبقاً عراقياً أصيلاً وقائمة الغداء الملكية (115 ر.س) في مطعم أغاتي." />
-  <meta property="og:image" content="./brand/logo-outline.png" />
-  <link rel="icon" type="image/png" href="./brand/logo-outline.png" />
-  <link rel="apple-touch-icon" href="./brand/logo-outline.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>أغاتي | Aghatti — Iraqi Cuisine Menu</title>
+  <meta name="description" content="منيو مطعم أغاتي للمأكولات العراقية الفاخرة — Aghatti Fine Iraqi Cuisine Interactive Menu" />
+  <meta name="theme-color" content="#FAF8F5" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* =========================================================================
+       1. CALM WARM LIGHT-MODE HOSPITALITY PALETTE (NO Dark / NO Heavy Blue)
+       ========================================================================= */
     :root {
-      --bg-dark: #070A0E;
-      --bg-deep: #030609;
-      --bg-card: #0D141C;
-      --turquoise: #1ECAD3;
-      --light-blue: #63D2FF;
-      --border-glow: rgba(30, 202, 211, 0.42);
-      --text-main: #F5F8FA;
-      --text-muted: #98A4B3;
+      --bg-canvas: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F4EFE8;
+      --bg-hover: #F7F3EC;
+      --border-warm: #EAE4DC;
+      --border-warm-strong: #DDD4C7;
+      --text-primary: #1F1C18;
+      --text-secondary: #685F55;
+      --text-muted: #988E82;
+      --brand-bronze: #8A6D4B;
+      --turquoise: #17A2B8;
+      --turquoise-light: #1ECAD3;
+      --turquoise-soft: rgba(23, 162, 184, 0.08);
+      --turquoise-border: rgba(23, 162, 184, 0.36);
+      --shadow-card: 0 10px 30px rgba(31, 28, 24, 0.045);
+      --shadow-elevated: 0 18px 46px rgba(31, 28, 24, 0.08);
       --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
@@ -40,292 +42,481 @@
     }
 
     html, body {
-      background: var(--bg-deep);
-      color: var(--text-main);
-      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      width: 100%;
       min-height: 100dvh;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: 'Cairo', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       overflow-x: hidden;
-      user-select: none;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Keyframes */
-    @keyframes logoGlow {
-      0%, 100% {
-        filter: url(#aghattiOutlineCrisp) drop-shadow(0 0 6px rgba(30, 202, 211, 0.38));
-      }
-      50% {
-        filter: url(#aghattiOutlineCrisp) drop-shadow(0 0 15px rgba(99, 210, 255, 0.82));
-      }
+    /* Subtle Keyframes */
+    @keyframes fadeUpGentle {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes archLevitate {
-      0%, 100% {
-        transform: translate3d(0, 0px, 0);
-        box-shadow: 0 22px 55px rgba(0, 0, 0, 0.78),
-                    0 0 24px rgba(30, 202, 211, 0.34),
-                    inset 0 0 28px rgba(30, 202, 211, 0.18);
-      }
-      50% {
-        transform: translate3d(0, -10px, 0);
-        box-shadow: 0 32px 68px rgba(0, 0, 0, 0.85),
-                    0 0 38px rgba(99, 210, 255, 0.58),
-                    inset 0 0 34px rgba(99, 210, 255, 0.28);
-      }
+    @keyframes fadeScaleIn {
+      0% { opacity: 0; transform: scale(0.97) translateY(6px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    @keyframes cardFloatEven {
-      0%, 100% { transform: translate3d(0, 0px, 0); }
-      50% { transform: translate3d(0, -5px, 0); }
-    }
-
-    @keyframes cardFloatOdd {
-      0%, 100% { transform: translate3d(0, 0px, 0); }
-      50% { transform: translate3d(0, -7px, 0); }
-    }
-
-    @keyframes warpScaleIn {
-      0% {
-        opacity: 0;
-        transform: perspective(1000px) scale(0.86) translate3d(0, 22px, -120px);
-        filter: blur(8px) brightness(1.45);
-      }
-      100% {
-        opacity: 1;
-        transform: perspective(1000px) scale(1) translate3d(0, 0, 0);
-        filter: blur(0px) brightness(1);
-      }
-    }
-
-    @keyframes staggerUp {
-      from {
-        opacity: 0;
-        transform: translate3d(0, 10px, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    #starParticles {
+    /* =========================================================================
+       QR LOCK SCREEN (Disabled by default for Demo Mode; kept for qr.html)
+       ========================================================================= */
+    .qr-lock {
       position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .cosmic-shell {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 960px;
-      min-height: 100dvh;
-      margin: 0 auto;
-      padding: 12px;
-      display: flex;
+      background: var(--bg-canvas);
+      z-index: 999;
+      display: none;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .qr-lock.visible {
+      display: flex;
     }
 
-    .editorial-frame {
-      position: relative;
-      flex: 1;
+    .lock-card {
+      max-width: 380px;
       width: 100%;
-      background: radial-gradient(circle at 50% 25%, rgba(16, 32, 46, 0.86) 0%, rgba(7, 10, 14, 0.94) 76%);
-      border: 1.5px solid var(--border-glow);
+      border: 1px solid var(--border-warm);
       border-radius: 26px;
-      padding: 16px 16px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 25px 75px rgba(0, 0, 0, 0.85), inset 0 0 25px rgba(30, 202, 211, 0.08);
-      overflow: hidden;
+      padding: 32px 24px;
+      background: var(--bg-card);
+      box-shadow: var(--shadow-elevated);
     }
 
-    .editorial-frame::after {
+    /* =========================================================================
+       STEP 1 — SERENE WELCOME LANGUAGE GATE (On Warm #FAF8F5 Canvas)
+       ========================================================================= */
+    .welcome-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: var(--bg-canvas);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.42s var(--ease-luxury), visibility 0.42s ease;
+    }
+
+    .welcome-gate.dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .welcome-card {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 28px;
+      padding: 38px 28px 34px;
+      text-align: center;
+      box-shadow: var(--shadow-elevated);
+      animation: fadeScaleIn 0.55s var(--ease-luxury) forwards;
+    }
+
+    /* Delicate inner editorial frame line */
+    .welcome-card::before {
       content: "";
       position: absolute;
-      inset: 5px;
-      border-radius: 21px;
-      border: 1px solid rgba(99, 210, 255, 0.16);
+      inset: 7px;
+      border-radius: 22px;
+      border: 1px solid rgba(234, 228, 220, 0.65);
       pointer-events: none;
     }
 
-    /* Top Header */
-    .header {
-      position: relative;
-      z-index: 35;
+    .welcome-arch-emblem {
+      width: 150px;
+      height: 184px;
+      margin: 0 auto 18px;
+      border-radius: 85px 85px 20px 20px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-shadow: inset 0 2px 8px rgba(31, 28, 24, 0.02);
+    }
+
+    .welcome-logo {
+      max-width: 100%;
+      max-height: 148px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .welcome-title-ar {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .welcome-title-en {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brand-bronze);
+      letter-spacing: 0.6px;
+      margin-bottom: 14px;
+    }
+
+    .welcome-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .welcome-lang-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .welcome-lang-btn {
+      appearance: none;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-warm-strong);
+      color: var(--text-primary);
+      padding: 13px 18px;
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-luxury);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .welcome-lang-btn.primary-ar {
+      border-color: var(--turquoise);
+      background: var(--turquoise-soft);
+    }
+
+    .welcome-lang-btn:hover,
+    .welcome-lang-btn:focus-visible {
+      border-color: var(--turquoise);
+      background: var(--turquoise);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(23, 162, 184, 0.2);
+    }
+
+    .welcome-lang-btn small {
+      font-size: 10.5px;
+      font-weight: 600;
+      opacity: 0.78;
+    }
+
+    /* =========================================================================
+       STEP 2 — UNCLUTTERED MENU EXPERIENCE SHELL
+       ========================================================================= */
+    .menu-shell {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 14px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* 1. Top Header */
+    .top-header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 20px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      padding-bottom: 10px;
-      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: var(--shadow-card);
     }
 
-    .logo-btn {
+    .header-brand-btn {
       background: transparent;
       border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-align: start;
+      transition: transform 0.25s var(--ease-luxury);
     }
 
-    .logo-btn:active {
-      transform: scale(0.94);
+    .header-brand-btn:active {
+      transform: scale(0.96);
     }
 
-    .logo-img {
+    .header-logo-img {
       height: 50px;
       width: auto;
       object-fit: contain;
-      animation: logoGlow 4s infinite ease-in-out;
+      display: block;
     }
 
-    .brand-titles {
+    .header-brand-text {
       display: flex;
       flex-direction: column;
-      text-align: start;
-      line-height: 1.15;
+      line-height: 1.2;
     }
 
-    .brand-ar {
+    .header-brand-ar {
       font-size: 16px;
-      font-weight: 900;
-      color: #FFFFFF;
-    }
-
-    .brand-en {
-      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 1.8px;
-      color: var(--light-blue);
+      color: var(--text-primary);
     }
 
-    .controls {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-wrap: wrap;
+    .header-brand-en {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: var(--brand-bronze);
+      text-transform: uppercase;
     }
 
-    .pill-btn {
-      background: rgba(30, 202, 211, 0.12);
-      border: 1px solid var(--border-glow);
-      color: var(--light-blue);
-      padding: 6px 13px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.25s var(--ease-luxury);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      text-decoration: none;
-    }
-
-    .pill-btn:hover,
-    .pill-btn.active {
-      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
-      color: #05080C;
-      border-color: transparent;
-      box-shadow: 0 0 18px rgba(30, 202, 211, 0.45);
-    }
-
-    .back-categories-btn {
-      background: linear-gradient(135deg, rgba(30, 202, 211, 0.95), rgba(99, 210, 255, 0.95));
-      color: #04070B;
-      border: none;
-      padding: 7px 16px;
-      border-radius: 999px;
-      font-size: 12.5px;
-      font-weight: 900;
-      font-family: inherit;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 0 20px rgba(30, 202, 211, 0.55);
-      transition: transform 0.25s var(--ease-luxury), box-shadow 0.25s ease;
-    }
-
-    .back-categories-btn.visible {
-      display: inline-flex;
-    }
-
-    .back-categories-btn:hover {
-      transform: translateY(-1px) scale(1.03);
-      box-shadow: 0 0 26px rgba(99, 210, 255, 0.8);
-    }
-
-    /* =========================================================================
-       LIVE SEARCH BAR & "القائمة الشاملة / Full Index" TOP COMMAND BAR
-       ========================================================================= */
-    .command-bar {
-      position: relative;
-      z-index: 40;
+    .header-actions {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding-bottom: 12px;
-      margin-bottom: 4px;
-      border-bottom: 1px solid rgba(30, 202, 211, 0.16);
+      flex-wrap: wrap;
+    }
+
+    .header-btn {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-warm);
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.22s var(--ease-luxury);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .header-btn:hover {
+      border-color: var(--turquoise);
+      color: var(--turquoise);
+      background: var(--bg-card);
+    }
+
+    .header-btn.index-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--turquoise-border);
+      color: var(--text-primary);
+    }
+
+    .header-btn.index-btn .accent-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--turquoise);
+      display: inline-block;
+    }
+
+    .header-btn.index-btn:hover {
+      background: var(--turquoise);
+      color: #FFFFFF;
+      border-color: var(--turquoise);
+    }
+
+    .header-btn.index-btn:hover .accent-dot {
+      background: #FFFFFF;
+    }
+
+    /* 2. Visible Category Strip with Rounded Square Food Thumbnails */
+    .category-strip-wrapper {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 20px;
+      padding: 12px 12px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .category-strip-track {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      padding: 2px 2px 4px;
+    }
+    .category-strip-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-thumb-card {
+      flex: 0 0 auto;
+      width: 96px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-warm);
+      border-radius: 16px;
+      padding: 8px 6px 9px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.25s var(--ease-luxury);
+      position: relative;
+    }
+
+    .cat-thumb-card:hover {
+      background: var(--bg-card);
+      border-color: var(--border-warm-strong);
+      transform: translateY(-2px);
+    }
+
+    /* Active Category Pill — Subtle Turquoise Accent Only */
+    .cat-thumb-card.active {
+      background: var(--bg-card);
+      border: 1.5px solid var(--turquoise);
+      box-shadow: 0 6px 18px rgba(23, 162, 184, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .cat-thumb-card.set-menu-special {
+      background: #FCF9F4;
+      border: 1px dashed var(--brand-bronze);
+    }
+
+    .cat-thumb-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 13px;
+      overflow: hidden;
+      border: 1px solid var(--border-warm);
+      background: var(--bg-subtle);
+      flex-shrink: 0;
+    }
+
+    .cat-thumb-card.active .cat-thumb-box {
+      border-color: var(--turquoise);
+    }
+
+    .cat-thumb-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s var(--ease-luxury);
+    }
+
+    .cat-thumb-card:hover .cat-thumb-box img {
+      transform: scale(1.07);
+    }
+
+    .cat-thumb-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .cat-thumb-card.active .cat-thumb-title {
+      color: var(--turquoise);
+      font-weight: 800;
+    }
+
+    .cat-thumb-count {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .cat-thumb-card.active .cat-thumb-count {
+      color: var(--turquoise);
+    }
+
+    /* 3. Clean Full-Width Rounded Search Bar */
+    .search-section {
+      position: relative;
+      z-index: 60;
     }
 
     .search-input-wrap {
       position: relative;
-      flex: 1;
       display: flex;
       align-items: center;
+      width: 100%;
     }
 
     .search-icon {
       position: absolute;
-      inset-inline-start: 13px;
-      color: var(--turquoise);
-      font-size: 13.5px;
+      inset-inline-start: 16px;
+      color: var(--text-muted);
+      font-size: 14px;
       pointer-events: none;
     }
 
     .search-input {
       width: 100%;
-      background: rgba(7, 12, 18, 0.85);
-      border: 1px solid rgba(30, 202, 211, 0.38);
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
       border-radius: 999px;
-      padding: 8px 34px 8px 36px;
-      color: #FFFFFF;
+      padding: 11px 40px 11px 42px;
+      color: var(--text-primary);
       font-family: inherit;
-      font-size: 12.5px;
+      font-size: 13.5px;
       font-weight: 600;
       outline: none;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: var(--shadow-card);
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
     }
 
     .search-input::placeholder {
       color: var(--text-muted);
+      font-weight: 500;
     }
 
     .search-input:focus {
-      border-color: var(--light-blue);
-      box-shadow: 0 0 18px rgba(30, 202, 211, 0.32);
+      border-color: var(--turquoise);
+      box-shadow: 0 0 0 3px var(--turquoise-soft);
     }
 
     .search-clear-btn {
       position: absolute;
-      inset-inline-end: 10px;
-      width: 22px;
-      height: 22px;
+      inset-inline-end: 12px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      border: none;
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-      font-size: 13px;
-      font-weight: 800;
+      border: 1px solid var(--border-warm);
+      background: var(--bg-canvas);
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 700;
       cursor: pointer;
       display: none;
       place-items: center;
@@ -335,60 +526,32 @@
       display: grid;
     }
 
-    .full-index-btn {
-      flex-shrink: 0;
-      background: linear-gradient(135deg, rgba(30, 202, 211, 0.22), rgba(99, 210, 255, 0.18));
-      border: 1.5px solid var(--turquoise);
-      color: #FFFFFF;
-      padding: 8px 15px;
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 900;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 0 16px rgba(30, 202, 211, 0.22);
-      transition: all 0.25s var(--ease-luxury);
-      white-space: nowrap;
-    }
-
-    .full-index-btn:hover {
-      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
-      color: #04080C;
-      border-color: transparent;
-      box-shadow: 0 0 24px rgba(99, 210, 255, 0.55);
-      transform: translateY(-1px);
-    }
-
-    /* Live Search Results Overlay (Pure Text Rows — No Images) */
+    /* Live Search Results Dropdown (Warm Light Mode) */
     .search-results-dropdown {
       position: absolute;
-      top: calc(100% - 4px);
+      top: calc(100% + 6px);
       inset-inline: 0;
-      max-height: 370px;
+      max-height: 360px;
       overflow-y: auto;
-      background: rgba(8, 13, 20, 0.98);
-      backdrop-filter: blur(18px);
-      border: 1.5px solid var(--turquoise);
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm-strong);
       border-radius: 20px;
       padding: 8px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.92), 0 0 30px rgba(30, 202, 211, 0.3);
+      box-shadow: var(--shadow-elevated);
       display: none;
       z-index: 120;
     }
 
     .search-results-dropdown.open {
       display: block;
-      animation: staggerUp 0.22s var(--ease-luxury) forwards;
+      animation: fadeUpGentle 0.2s var(--ease-luxury) forwards;
     }
 
     .search-result-row {
       width: 100%;
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid var(--border-warm);
       padding: 10px 12px;
       border-radius: 12px;
       display: flex;
@@ -396,10 +559,10 @@
       justify-content: space-between;
       gap: 10px;
       text-align: start;
-      color: var(--text-main);
+      color: var(--text-primary);
       font-family: inherit;
       cursor: pointer;
-      transition: background 0.18s ease, transform 0.18s ease;
+      transition: background 0.18s ease;
     }
 
     .search-result-row:last-child {
@@ -407,12 +570,7 @@
     }
 
     .search-result-row:hover {
-      background: rgba(30, 202, 211, 0.14);
-      transform: translateX(-2px);
-    }
-
-    [dir="ltr"] .search-result-row:hover {
-      transform: translateX(2px);
+      background: var(--bg-hover);
     }
 
     .search-row-left {
@@ -425,7 +583,7 @@
     .search-row-title {
       font-size: 13.5px;
       font-weight: 800;
-      color: #FFFFFF;
+      color: var(--text-primary);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -433,17 +591,17 @@
     }
 
     .search-row-en {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
     .search-cat-tag {
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--light-blue);
-      background: rgba(99, 210, 255, 0.12);
-      border: 1px solid rgba(99, 210, 255, 0.3);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--brand-bronze);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-warm);
       padding: 1px 8px;
       border-radius: 999px;
       width: fit-content;
@@ -458,43 +616,469 @@
 
     .search-row-cal {
       font-size: 11px;
-      font-weight: 700;
-      color: var(--light-blue);
+      font-weight: 600;
+      color: var(--text-muted);
     }
 
     .search-row-price {
       font-size: 13px;
-      font-weight: 900;
+      font-weight: 800;
       color: var(--turquoise);
-      background: rgba(30, 202, 211, 0.12);
-      border: 1px solid rgba(30, 202, 211, 0.35);
+      background: var(--turquoise-soft);
+      border: 1px solid var(--turquoise-border);
       padding: 3px 10px;
       border-radius: 999px;
     }
 
     /* =========================================================================
-       COMPREHENSIVE TEXT-ONLY MASTER MENU INDEX ("القائمة الشاملة / Full Index")
+       4. ARCH-FRAME SHOWCASE & CLEAN DISH CARD (On Pure #FFFFFF Card)
        ========================================================================= */
+    .showcase-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 26px;
+      padding: 16px 16px 20px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .showcase-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-warm);
+    }
+
+    .showcase-cat-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .showcase-cat-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .showcase-cat-sub {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .showcase-counter-pill {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--turquoise);
+      background: var(--turquoise-soft);
+      border: 1px solid var(--turquoise-border);
+      padding: 3px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* Center Arch-Frame Stage */
+    .stage-wrapper {
+      position: relative;
+      height: 328px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 12px 0 10px;
+      touch-action: pan-y;
+      perspective: 1000px;
+    }
+
+    /* Subtle Turquoise Hairline Arch Border on #FFFFFF */
+    .arch-window {
+      position: relative;
+      width: 242px;
+      height: 316px;
+      border-radius: 140px 140px 24px 24px;
+      border: 1.5px solid var(--turquoise);
+      background: var(--bg-canvas);
+      pointer-events: none;
+      z-index: 2;
+      box-shadow: 0 14px 34px rgba(31, 28, 24, 0.06);
+    }
+
+    .arch-window::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 135px 135px 19px 19px;
+      border: 1px solid rgba(23, 162, 184, 0.25);
+      pointer-events: none;
+    }
+
+    .carousel-track {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .dish-slide {
+      position: absolute;
+      width: 228px;
+      height: 302px;
+      border-radius: 133px 133px 18px 18px;
+      overflow: hidden;
+      transition: transform 0.52s var(--ease-luxury),
+                  opacity 0.52s var(--ease-luxury),
+                  filter 0.52s var(--ease-luxury);
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(31, 28, 24, 0.12);
+      background: var(--bg-subtle);
+      will-change: transform, opacity;
+    }
+
+    .dish-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s var(--ease-luxury);
+      pointer-events: none;
+    }
+
+    .dish-slide.active {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .dish-slide.active:hover img {
+      transform: scale(1.04);
+    }
+
+    .dish-slide.prev {
+      transform: translate3d(175px, 10px, -40px) scale(0.76);
+      opacity: 0.34;
+      z-index: 4;
+      filter: saturate(0.85);
+    }
+
+    .dish-slide.next {
+      transform: translate3d(-175px, 10px, -40px) scale(0.76);
+      opacity: 0.34;
+      z-index: 4;
+      filter: saturate(0.85);
+    }
+
+    [dir="ltr"] .dish-slide.prev {
+      transform: translate3d(-175px, 10px, -40px) scale(0.76);
+    }
+    [dir="ltr"] .dish-slide.next {
+      transform: translate3d(175px, 10px, -40px) scale(0.76);
+    }
+
+    .dish-slide.hidden {
+      transform: translate3d(0, 14px, -80px) scale(0.5);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Clear Left/Right Arrows on Warm Light Surface */
+    .stage-side-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border-warm-strong);
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--text-primary);
+      font-size: 21px;
+      font-weight: 700;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 25;
+      box-shadow: 0 6px 18px rgba(31, 28, 24, 0.08);
+      transition: all 0.22s var(--ease-luxury);
+    }
+
+    .stage-side-arrow:hover {
+      border-color: var(--turquoise);
+      color: var(--turquoise);
+      background: #FFFFFF;
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .stage-side-arrow.arrow-right {
+      right: 4px;
+    }
+
+    .stage-side-arrow.arrow-left {
+      left: 4px;
+    }
+
+    /* Clean Dish Readout Below the Arch */
+    .dish-info {
+      text-align: center;
+      padding: 4px 8px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .info-fade {
+      width: 100%;
+      max-width: 520px;
+      animation: fadeUpGentle 0.34s var(--ease-luxury) both;
+    }
+
+    .dish-title-primary {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.28;
+    }
+
+    .dish-title-secondary {
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Playfair Display', 'Plus Jakarta Sans', serif;
+      color: var(--brand-bronze);
+      margin-bottom: 6px;
+    }
+
+    /* 2-Line Clamped Clean Description */
+    .dish-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      max-width: 440px;
+      margin: 0 auto 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 42px;
+    }
+
+    /* Price, Calorie & Allergen Row */
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Subtle Turquoise Price Readout */
+    .price-tag {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--turquoise);
+      background: var(--turquoise-soft);
+      border: 1px solid var(--turquoise-border);
+      padding: 4px 16px;
+      border-radius: 999px;
+    }
+
+    .cal-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-warm);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .details-pill-btn {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-warm);
+      color: var(--text-secondary);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .details-pill-btn:hover {
+      border-color: var(--turquoise);
+      color: var(--turquoise);
+      background: var(--bg-card);
+    }
+
+    .allergen-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 24px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .allergen-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand-bronze);
+      background: #FBF8F3;
+      border: 1px solid var(--border-warm);
+      padding: 2px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .allergen-clean {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Minimal Pagination Dots */
+    .nav-footer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-warm);
+    }
+
+    .footer-arrow-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border-warm);
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      font-size: 16px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .footer-arrow-btn:hover {
+      border-color: var(--turquoise);
+      color: var(--turquoise);
+      background: var(--bg-card);
+    }
+
+    .dots {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 280px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--border-warm-strong);
+      transition: all 0.28s ease;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      width: 20px;
+      background: var(--turquoise);
+    }
+
+    /* =========================================================================
+       5. LIGHT-MODE MODALS: FULL TEXT INDEX, SET MENU & DISH LIGHTBOX
+       ========================================================================= */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(31, 28, 24, 0.42);
+      backdrop-filter: blur(6px);
+      z-index: 600;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      max-height: 90dvh;
+      overflow-y: auto;
+      scrollbar-width: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 26px;
+      padding: 22px 20px 24px;
+      box-shadow: var(--shadow-elevated);
+      animation: fadeScaleIn 0.3s var(--ease-luxury) forwards;
+    }
+    .modal-card::-webkit-scrollbar { display: none; }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 14px;
+      inset-inline-end: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border-warm);
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 10;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      border-color: var(--turquoise);
+      color: var(--turquoise);
+    }
+
+    /* Text-Only Master Menu Index ("القائمة الشاملة / Full Index") */
     .full-index-card {
       position: relative;
       width: 100%;
       max-width: 680px;
-      height: 88dvh;
-      max-height: 860px;
+      height: 86dvh;
+      max-height: 840px;
       display: flex;
       flex-direction: column;
-      background: linear-gradient(180deg, #0D1620 0%, #060A0F 100%);
-      border: 1.5px solid var(--turquoise);
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-warm);
       border-radius: 26px;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.92), 0 0 40px rgba(30, 202, 211, 0.28);
+      box-shadow: var(--shadow-elevated);
       overflow: hidden;
-      animation: warpScaleIn 0.32s var(--ease-luxury) forwards;
+      animation: fadeScaleIn 0.3s var(--ease-luxury) forwards;
     }
 
     .full-index-header {
       padding: 16px 18px 12px;
-      border-bottom: 1px solid rgba(30, 202, 211, 0.22);
-      background: rgba(7, 11, 16, 0.9);
+      border-bottom: 1px solid var(--border-warm);
+      background: var(--bg-card);
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -519,41 +1103,46 @@
     .index-jump-chip {
       flex-shrink: 0;
       font-family: inherit;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 4px 11px;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 12px;
       border-radius: 999px;
-      background: rgba(30, 202, 211, 0.08);
-      border: 1px solid rgba(30, 202, 211, 0.3);
-      color: var(--light-blue);
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-warm);
+      color: var(--text-secondary);
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .index-jump-chip:hover {
-      background: var(--turquoise);
-      color: #04080C;
+      border-color: var(--turquoise);
+      color: var(--turquoise);
+      background: var(--bg-card);
     }
 
     .full-index-body {
       flex: 1;
       overflow-y: auto;
-      padding: 14px 18px 24px;
+      padding: 16px 18px 26px;
       scrollbar-width: thin;
-      scrollbar-color: var(--turquoise) transparent;
+      scrollbar-color: var(--border-warm-strong) transparent;
     }
 
     .index-category-block {
-      margin-bottom: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 18px;
+      padding: 14px 14px 10px;
+      margin-bottom: 14px;
     }
 
     .index-cat-heading {
-      font-size: 15px;
-      font-weight: 900;
+      font-size: 14.5px;
+      font-weight: 800;
       color: var(--turquoise);
-      padding-bottom: 6px;
-      margin-bottom: 8px;
-      border-bottom: 1px solid rgba(30, 202, 211, 0.32);
+      padding-bottom: 8px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--border-warm);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -570,32 +1159,32 @@
       justify-content: space-between;
       gap: 8px;
       font-family: inherit;
-      color: var(--text-main);
+      color: var(--text-primary);
       cursor: pointer;
       text-align: start;
-      transition: background 0.18s ease, color 0.18s ease;
+      transition: background 0.16s ease;
     }
 
     .index-text-row:hover {
-      background: rgba(30, 202, 211, 0.12);
+      background: var(--bg-hover);
     }
 
     .index-dish-name {
       font-size: 13.5px;
-      font-weight: 800;
-      color: #FFFFFF;
+      font-weight: 700;
+      color: var(--text-primary);
     }
 
     .index-dish-name-sub {
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 11.5px;
+      font-weight: 500;
       color: var(--text-muted);
       margin-inline-start: 6px;
     }
 
     .index-leader-dots {
       flex: 1;
-      border-bottom: 1px dotted rgba(152, 164, 179, 0.28);
+      border-bottom: 1px dotted var(--border-warm-strong);
       margin: 0 6px;
       min-width: 16px;
     }
@@ -609,649 +1198,24 @@
 
     .index-dish-cal {
       font-size: 11px;
-      font-weight: 700;
-      color: var(--light-blue);
+      font-weight: 600;
+      color: var(--text-muted);
     }
 
     .index-dish-price {
       font-size: 13.5px;
-      font-weight: 900;
+      font-weight: 800;
       color: var(--turquoise);
       min-width: 62px;
       text-align: end;
     }
 
-    /* =========================================================================
-       VIEW 1: FULL-SCREEN SPACE-AGE CATEGORY PORTAL (Interactive Category Hub)
-       ========================================================================= */
-    .portal-hub-view {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 8px 2px 4px;
-      animation: warpScaleIn 0.55s var(--ease-luxury) forwards;
-    }
-
-    .hub-intro {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .hub-intro-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11.5px;
-      font-weight: 800;
-      color: var(--light-blue);
-      background: rgba(30, 202, 211, 0.12);
-      border: 1px solid rgba(30, 202, 211, 0.35);
-      padding: 4px 14px;
-      border-radius: 999px;
-      margin-bottom: 6px;
-    }
-
-    .hub-title {
-      font-size: clamp(19px, 3.2vw, 25px);
-      font-weight: 900;
-      color: #FFFFFF;
-      letter-spacing: 0.2px;
-    }
-
-    /* Highlighted SET MENU (115 SAR) Holographic Banner */
-    .set-menu-portal-card {
-      position: relative;
-      width: 100%;
-      margin-bottom: 12px;
-      padding: 13px 16px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(30, 202, 211, 0.22) 0%, rgba(13, 25, 36, 0.92) 55%, rgba(99, 210, 255, 0.2) 100%);
-      border: 1.5px solid var(--turquoise);
-      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.65), 0 0 24px rgba(30, 202, 211, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      cursor: pointer;
-      transition: transform 0.28s var(--ease-luxury), box-shadow 0.28s ease;
-    }
-
-    .set-menu-portal-card:hover {
-      transform: translateY(-2px) scale(1.01);
-      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.75), 0 0 32px rgba(99, 210, 255, 0.45);
-    }
-
-    .set-menu-badge {
-      display: inline-block;
-      font-size: 10.5px;
-      font-weight: 900;
-      padding: 2px 10px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--turquoise), var(--light-blue));
-      color: #04080C;
-      margin-bottom: 4px;
-    }
-
-    .set-menu-title {
-      font-size: 15.5px;
-      font-weight: 900;
-      color: #FFFFFF;
-    }
-
-    .set-menu-sub {
-      font-size: 11.5px;
-      color: var(--text-muted);
-    }
-
-    .set-menu-price-orb {
-      flex-shrink: 0;
-      padding: 8px 15px;
-      border-radius: 16px;
-      background: rgba(7, 10, 14, 0.85);
-      border: 1.5px solid var(--light-blue);
-      text-align: center;
-      box-shadow: 0 0 18px rgba(99, 210, 255, 0.3);
-    }
-
-    .set-menu-price-orb strong {
-      display: block;
-      font-size: 17px;
-      font-weight: 900;
-      color: var(--turquoise);
-      line-height: 1.1;
-    }
-
-    .set-menu-price-orb span {
-      font-size: 10px;
-      color: var(--light-blue);
-      font-weight: 700;
-    }
-
-    /* 10 Holographic Category Cards Grid */
-    .categories-hub-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 11px;
-    }
-
-    @media (min-width: 640px) {
-      .categories-hub-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-    }
-
-    @media (min-width: 900px) {
-      .categories-hub-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 14px;
-      }
-    }
-
-    .holo-cat-wrap-even {
-      animation: cardFloatEven 5.2s ease-in-out infinite;
-    }
-
-    .holo-cat-wrap-odd {
-      animation: cardFloatOdd 6s ease-in-out infinite;
-    }
-
-    .holo-cat-card {
-      position: relative;
-      height: 100%;
-      background: linear-gradient(160deg, rgba(16, 28, 40, 0.88) 0%, rgba(8, 13, 19, 0.95) 100%);
-      border: 1px solid rgba(30, 202, 211, 0.35);
-      border-radius: 20px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      overflow: hidden;
-      transform-style: preserve-3d;
-      transition: transform 0.25s var(--ease-luxury), border-color 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), inset 0 0 15px rgba(30, 202, 211, 0.08);
-      will-change: transform;
-    }
-
-    .holo-cat-card:hover {
-      border-color: var(--light-blue);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8), 0 0 24px rgba(30, 202, 211, 0.38);
-    }
-
-    .holo-cat-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 7px;
-      z-index: 2;
-    }
-
-    .holo-cat-num {
-      font-size: 10.5px;
-      font-weight: 900;
-      color: var(--turquoise);
-      background: rgba(30, 202, 211, 0.12);
-      border: 1px solid rgba(30, 202, 211, 0.35);
-      padding: 1px 8px;
-      border-radius: 999px;
-    }
-
-    .holo-cat-count {
-      font-size: 10.5px;
-      font-weight: 800;
-      color: var(--light-blue);
-      background: rgba(99, 210, 255, 0.12);
-      border: 1px solid rgba(99, 210, 255, 0.3);
-      padding: 1px 8px;
-      border-radius: 999px;
-    }
-
-    .holo-cat-arch {
-      position: relative;
-      width: 100%;
-      height: 92px;
-      border-radius: 48px 48px 14px 14px;
-      overflow: hidden;
-      border: 1px solid rgba(30, 202, 211, 0.45);
-      margin-bottom: 8px;
-      background: #060A0F;
-    }
-
-    .holo-cat-arch img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.55s var(--ease-luxury);
-    }
-
-    .holo-cat-card:hover .holo-cat-arch img {
-      transform: scale(1.1);
-    }
-
-    .holo-cat-name-ar {
-      font-size: 14px;
-      font-weight: 800;
-      color: #FFFFFF;
-      text-align: center;
-      line-height: 1.25;
-    }
-
-    .holo-cat-name-en {
-      font-size: 10.5px;
-      font-weight: 700;
-      color: var(--light-blue);
-      text-align: center;
-      margin-top: 2px;
-    }
-
-    /* =========================================================================
-       VIEW 2: ANTI-GRAVITY DISH SHOWCASE STAGE (Inside Selected Category)
-       ========================================================================= */
-    .dish-showcase-view {
-      flex: 1;
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-top: 4px;
-      animation: warpScaleIn 0.55s var(--ease-luxury) forwards;
-    }
-
-    .dish-showcase-view.active {
-      display: flex;
-    }
-
-    .portal-hub-view.hidden {
-      display: none;
-    }
-
-    .category-stage-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 6px 10px;
-      border-radius: 16px;
-      background: rgba(30, 202, 211, 0.07);
-      border: 1px solid rgba(30, 202, 211, 0.24);
-      z-index: 20;
-    }
-
-    .stage-cat-title {
-      font-size: 15px;
-      font-weight: 900;
-      color: #FFFFFF;
-    }
-
-    .stage-cat-counter {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--light-blue);
-      background: rgba(99, 210, 255, 0.12);
-      border: 1px solid rgba(99, 210, 255, 0.3);
-      padding: 2px 10px;
-      border-radius: 999px;
-    }
-
-    /* Center Anti-Gravity Arch-Portal Stage */
-    .stage-wrapper {
-      position: relative;
-      flex: 1;
-      min-height: 330px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 6px 0;
-      touch-action: pan-y;
-      perspective: 1000px;
-    }
-
-    .arch-window {
-      position: relative;
-      width: 248px;
-      height: 326px;
-      border-radius: 145px 145px 26px 26px;
-      border: 2px solid var(--turquoise);
-      background: linear-gradient(180deg, rgba(30, 202, 211, 0.15) 0%, rgba(9, 14, 20, 0.9) 100%);
-      animation: archLevitate 4.2s infinite ease-in-out;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .arch-window::after {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border-radius: 139px 139px 20px 20px;
-      border: 1px solid rgba(99, 210, 255, 0.32);
-      pointer-events: none;
-    }
-
-    .carousel-track {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 5;
-    }
-
-    .dish-slide {
-      position: absolute;
-      width: 234px;
-      height: 312px;
-      border-radius: 138px 138px 22px 22px;
-      overflow: hidden;
-      transition: transform 0.56s var(--ease-luxury),
-                  opacity 0.56s var(--ease-luxury),
-                  filter 0.56s var(--ease-luxury);
-      cursor: pointer;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.72);
-      background: #090E14;
-      will-change: transform, opacity;
-    }
-
-    .dish-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s var(--ease-luxury);
-      pointer-events: none;
-    }
-
-    .dish-slide.active {
-      transform: translate3d(0, 0, 0) scale(1);
-      opacity: 1;
-      z-index: 10;
-      filter: brightness(1.05);
-      animation: archLevitate 4.2s infinite ease-in-out;
-    }
-
-    .dish-slide.active img {
-      transform: scale(1.05) translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0);
-    }
-
-    .dish-slide.prev {
-      transform: translate3d(185px, 8px, -50px) scale(0.75);
-      opacity: 0.42;
-      z-index: 4;
-      filter: brightness(0.65);
-    }
-
-    .dish-slide.next {
-      transform: translate3d(-185px, 8px, -50px) scale(0.75);
-      opacity: 0.42;
-      z-index: 4;
-      filter: brightness(0.65);
-    }
-
-    [dir="ltr"] .dish-slide.prev {
-      transform: translate3d(-185px, 8px, -50px) scale(0.75);
-    }
-    [dir="ltr"] .dish-slide.next {
-      transform: translate3d(185px, 8px, -50px) scale(0.75);
-    }
-
-    .dish-slide.hidden {
-      transform: translate3d(0, 15px, -90px) scale(0.48);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Visible Glowing Left/Right Stage Arrows */
-    .stage-side-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid var(--turquoise);
-      background: rgba(7, 12, 18, 0.85);
-      backdrop-filter: blur(8px);
-      color: var(--turquoise);
-      font-size: 22px;
-      font-weight: 900;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      z-index: 25;
-      box-shadow: 0 0 18px rgba(30, 202, 211, 0.38);
-      transition: all 0.22s var(--ease-luxury);
-    }
-
-    .stage-side-arrow:hover {
-      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
-      color: #04080C;
-      box-shadow: 0 0 26px rgba(99, 210, 255, 0.75);
-      transform: translateY(-50%) scale(1.08);
-    }
-
-    .stage-side-arrow.arrow-right {
-      right: 6px;
-    }
-
-    .stage-side-arrow.arrow-left {
-      left: 6px;
-    }
-
-    /* Clean Bottom Readout */
-    .dish-info {
-      text-align: center;
-      z-index: 20;
-      padding: 4px 10px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .info-fade .dish-title-ar,
-    .info-fade .dish-title-en {
-      animation: staggerUp 0.4s var(--ease-luxury) 0ms both;
-    }
-
-    .info-fade .dish-desc {
-      animation: staggerUp 0.42s var(--ease-luxury) 55ms both;
-    }
-
-    .info-fade .meta-row,
-    .info-fade .allergen-row {
-      animation: staggerUp 0.45s var(--ease-luxury) 110ms both;
-    }
-
-    .dish-title-ar {
-      font-size: 22px;
-      font-weight: 900;
-      color: #FFFFFF;
-      line-height: 1.25;
-    }
-
-    .dish-title-en {
-      font-size: 13px;
-      font-weight: 700;
-      font-family: 'Playfair Display', 'Plus Jakarta Sans', serif;
-      color: var(--light-blue);
-      letter-spacing: 0.4px;
-      margin-bottom: 5px;
-    }
-
-    .dish-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-      max-width: 420px;
-      margin: 0 auto 8px;
-    }
-
-    .meta-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-
-    .price-tag {
-      font-size: 18px;
-      font-weight: 900;
-      color: #04080C;
-      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
-      padding: 3px 14px;
-      border-radius: 999px;
-      box-shadow: 0 0 18px rgba(30, 202, 211, 0.45);
-    }
-
-    .cal-tag {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--light-blue);
-      background: rgba(99, 210, 255, 0.12);
-      border: 1px solid rgba(99, 210, 255, 0.35);
-      padding: 3px 12px;
-      border-radius: 999px;
-    }
-
-    .allergen-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      min-height: 24px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    .allergen-badge {
-      font-size: 11px;
-      font-weight: 800;
-      color: #FDE68A;
-      background: rgba(212, 175, 55, 0.14);
-      border: 1px solid rgba(212, 175, 55, 0.42);
-      padding: 2px 10px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .allergen-clean {
-      font-size: 11px;
-      font-weight: 700;
-      color: rgba(99, 210, 255, 0.85);
-    }
-
-    /* Dots & Footer Navigation */
-    .nav-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .arrow-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid var(--border-glow);
-      background: rgba(30, 202, 211, 0.1);
-      color: var(--turquoise);
-      font-size: 17px;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      transition: 0.2s;
-      flex-shrink: 0;
-    }
-    .arrow-btn:hover {
-      background: var(--turquoise);
-      color: #05080B;
-    }
-
-    .dots {
-      display: flex;
-      gap: 5px;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 260px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.22);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .dot.active {
-      width: 20px;
-      background: linear-gradient(90deg, var(--turquoise), var(--light-blue));
-      box-shadow: 0 0 8px var(--turquoise);
-    }
-
-    /* Modals */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 6, 10, 0.88);
-      backdrop-filter: blur(14px);
-      z-index: 600;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-
-    .modal-backdrop.open {
-      display: flex;
-    }
-
-    .modal-card {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      max-height: 90dvh;
-      overflow-y: auto;
-      scrollbar-width: none;
-      background: linear-gradient(180deg, #101B27 0%, #070B10 100%);
-      border: 1.5px solid var(--turquoise);
-      border-radius: 26px;
-      padding: 20px 18px 22px;
-      box-shadow: 0 25px 75px rgba(0, 0, 0, 0.9), 0 0 36px rgba(30, 202, 211, 0.28);
-      animation: warpScaleIn 0.35s var(--ease-luxury) forwards;
-    }
-    .modal-card::-webkit-scrollbar { display: none; }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      background: rgba(7, 10, 14, 0.8);
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      z-index: 10;
-    }
-
+    /* Set Menu Course Step Card */
     .course-step-card {
-      background: rgba(30, 202, 211, 0.06);
-      border: 1px solid rgba(30, 202, 211, 0.24);
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-warm);
       border-radius: 16px;
-      padding: 10px 13px;
+      padding: 11px 14px;
       margin-bottom: 9px;
       display: flex;
       gap: 10px;
@@ -1260,245 +1224,251 @@
 
     .course-step-num {
       font-size: 11px;
-      font-weight: 900;
-      color: #04080C;
-      background: linear-gradient(135deg, var(--turquoise), var(--light-blue));
+      font-weight: 800;
+      color: var(--turquoise);
+      background: var(--turquoise-soft);
+      border: 1px solid var(--turquoise-border);
       padding: 2px 8px;
       border-radius: 999px;
       flex-shrink: 0;
       margin-top: 2px;
     }
 
-    /* QR Lock Screen */
-    .qr-lock {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 50% 35%, #0F1C28 0%, #06090D 80%);
-      z-index: 999;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-    }
-    .qr-lock.visible { display: flex; }
-
-    .lock-card {
-      max-width: 365px;
-      width: 100%;
-      border: 1.5px solid var(--turquoise);
-      border-radius: 26px;
-      padding: 28px 22px;
-      background: rgba(11, 16, 22, 0.94);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(30, 202, 211, 0.22);
-    }
-
-    .lock-main-logo {
-      height: 110px;
-      width: auto;
-      object-fit: contain;
-      margin: 0 auto 14px;
-      display: block;
-      filter: url(#aghattiMainDark) drop-shadow(0 0 14px rgba(30, 202, 211, 0.4));
+    @media (max-width: 520px) {
+      .menu-shell {
+        padding: 8px 10px 22px;
+        gap: 10px;
+      }
+      .top-header {
+        padding: 8px 12px;
+      }
+      .header-logo-img {
+        height: 44px;
+      }
+      .header-brand-ar {
+        font-size: 14.5px;
+      }
+      .header-btn {
+        padding: 7px 11px;
+        font-size: 11.5px;
+      }
+      .cat-thumb-card {
+        width: 86px;
+        padding: 7px 5px 8px;
+      }
+      .cat-thumb-box {
+        width: 52px;
+        height: 52px;
+      }
+      .stage-wrapper {
+        height: 306px;
+      }
+      .arch-window {
+        width: 226px;
+        height: 296px;
+      }
+      .dish-slide {
+        width: 212px;
+        height: 282px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hidden SVG Filters for Crisp Rendering of Official Aghatti PNG Logos on Dark #070A0E -->
-  <svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
-    <defs>
-      <filter id="aghattiOutlineCrisp" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
-        <feMorphology in="SourceGraphic" operator="dilate" radius="0.35" result="dilated" />
-        <feComponentTransfer in="dilated">
-          <feFuncA type="linear" slope="4.8" intercept="0" />
-        </feComponentTransfer>
-      </filter>
-      <filter id="aghattiMainDark" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
-        <feColorMatrix type="matrix" values="
-          1.15  0     0     0  0.04
-          0     1.12  0     0  0.03
-          0     0     1.10  0  0.02
-         -1.85 -0.65 -1.85  0  4.25
-        " />
-      </filter>
-    </defs>
-  </svg>
-
-  <!-- Floating Ambient Star-Particles in Turquoise (#1ECAD3) & Light Blue (#63D2FF) -->
-  <canvas id="starParticles"></canvas>
-
-  <!-- QR Lock Screen -->
-  <div id="qrLockScreen" class="qr-lock">
+  <!-- =======================================================================
+       QR LOCK SCREEN (Disabled for Demo Mode; kept intact for qr.html)
+       ======================================================================= -->
+  <div id="qrLockScreen" class="qr-lock" aria-hidden="true">
     <div class="lock-card">
-      <img src="./brand/logo-main.png" alt="Aghatti Iraqi Cuisine" class="lock-main-logo" />
-      <h2 style="font-size:20px; margin-bottom:8px; color:#fff;">يرجى مسح الباركود على الطاولة</h2>
-      <p style="font-size:13px; color:#98A4B3; line-height:1.6; margin-bottom:20px;">
+      <img
+        src="./Aghatti logo-transparent background.png"
+        onerror="this.src='./Aghatti logo.png'"
+        alt="Aghatti Iraqi Cuisine"
+        style="height:110px; width:auto; object-fit:contain; margin:0 auto 14px; display:block;"
+      />
+      <h2 style="font-size:19px; margin-bottom:8px; color:var(--text-primary);">يرجى مسح الباركود على الطاولة</h2>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.6; margin-bottom:20px;">
         هذا المنيو مخصص للضيوف داخل مطعم أغاتي عبر رمز QR الخاص بالطاولة.<br/>
         Please scan the table QR code to access the menu.
       </p>
       <div style="display:flex; flex-direction:column; gap:10px; align-items:center;">
-        <button type="button" onclick="unlockDemo()" class="pill-btn active" style="padding:10px 24px; font-size:13px;">
+        <button type="button" onclick="unlockDemo()" class="header-btn index-btn" style="padding:10px 24px;">
           معاينة تجريبية (Demo Bypass)
         </button>
-        <a href="./qr.html" class="pill-btn" style="font-size:11.5px;">
+        <a href="./qr.html" class="header-btn" style="font-size:11.5px;">
           بوابة توليد رموز الطاولات (QR Generator)
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Main Cosmic Gastronomy App Shell -->
-  <div class="cosmic-shell">
-    <div class="editorial-frame">
-
-      <!-- Top Header -->
-      <header class="header">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <button type="button" id="headerLogoBtn" class="logo-btn" onclick="openCategoryHub()" title="العودة لبوابة الأقسام">
-            <img src="./brand/logo-outline.png" alt="Aghatti Logo" class="logo-img" />
-            <div class="brand-titles">
-              <span class="brand-ar" id="brandArTitle">أغاتي</span>
-              <span class="brand-en">AGHATTI • IRAQI CUISINE</span>
-            </div>
-          </button>
-
-          <!-- Glowing Return to Categories Button (Visible inside Category Showcase) -->
-          <button type="button" id="backToCategoriesBtn" class="back-categories-btn" onclick="openCategoryHub()">
-            ← الأقسام / Categories
-          </button>
-        </div>
-
-        <div class="controls">
-          <span id="tableBadge" style="font-size:11.5px; font-weight:800; color:var(--light-blue);">طاولة #01</span>
-          <button type="button" class="pill-btn" onclick="openSetMenuModal()" id="setMenuTopBtn">
-            ✦ قائمة الغداء 115 ر.س
-          </button>
-          <a href="./qr.html" class="pill-btn" title="مولد باركود الطاولات">QR</a>
-          <button type="button" id="langToggle" class="pill-btn" onclick="toggleLang()">EN</button>
-        </div>
-      </header>
-
-      <!-- ===================================================================
-           TOP LIVE SEARCH BAR & "القائمة الشاملة / Full Index" BUTTON
-           =================================================================== -->
-      <div class="command-bar">
-        <div class="search-input-wrap">
-          <span class="search-icon">🔍</span>
-          <input
-            type="search"
-            id="liveSearchInput"
-            class="search-input"
-            placeholder="ابحث بالاسم أو القسم... / Search menu..."
-            autocomplete="off"
-            oninput="handleLiveSearch(this.value)"
-            onfocus="if(this.value.trim()) handleLiveSearch(this.value)"
-          />
-          <button type="button" id="searchClearBtn" class="search-clear-btn" onclick="clearLiveSearch()" aria-label="Clear search">×</button>
-        </div>
-
-        <button type="button" id="fullIndexTopBtn" class="full-index-btn" onclick="openFullIndexModal()">
-          <span>☰</span>
-          <span id="fullIndexBtnLabel">القائمة الشاملة / Full Index</span>
-        </button>
-
-        <!-- Real-Time Text Search Results Overlay -->
-        <div id="searchResultsDropdown" class="search-results-dropdown" role="listbox"></div>
+  <!-- =======================================================================
+       STEP 1 — SERENE WELCOME LANGUAGE GATE (On #FAF8F5 Light Canvas)
+       ======================================================================= -->
+  <section id="welcomeGate" class="welcome-gate" aria-label="Welcome Language Selection">
+    <div class="welcome-card">
+      <div class="welcome-arch-emblem">
+        <img
+          src="./Aghatti logo-transparent background.png"
+          onerror="this.src='./Aghatti logo.png'"
+          alt="أغاتي | Aghatti Iraqi Cuisine"
+          class="welcome-logo"
+        />
       </div>
 
-      <!-- ===================================================================
-           VIEW 1: FULL-SCREEN SPACE-AGE CATEGORY PORTAL (10 Categories + Set Menu)
-           =================================================================== -->
-      <section id="portalHubView" class="portal-hub-view" aria-label="Space-Age Category Portal">
-        <div>
-          <div class="hub-intro">
-            <span class="hub-intro-badge" id="hubIntroBadge">✦ بوابة الأقسام الفضائية • اختر القسم لاستكشاف الأطباق</span>
-            <h1 class="hub-title" id="hubMainTitle">منيو أغاتي للمأكولات العراقية الفاخرة</h1>
-          </div>
+      <h1 class="welcome-title-ar">أهلاً بكم في مطعم أغاتي</h1>
+      <div class="welcome-title-en">Welcome to Aghatti • Iraqi Cuisine</div>
+      <p class="welcome-sub">
+        تجربة ضيافة عراقية أصيلة من قلب بلاد الرافدين<br/>
+        يرجى اختيار اللغة لتصفح القائمة • Select your language
+      </p>
 
-          <!-- Highlighted SET MENU (115 SAR) Portal Banner -->
-          <div class="set-menu-portal-card" onclick="openSetMenuModal()" role="button" tabindex="0">
-            <div>
-              <span class="set-menu-badge" id="setMenuBadgeText">✦ عرض خاص متكامل • SPECIAL SET MENU</span>
-              <div class="set-menu-title" id="setMenuCardTitle">قائمة الغداء الملكية | SET MENU</div>
-              <div class="set-menu-sub" id="setMenuCardSub">شوربة + سلطات + مقبلات باردة وساخنة + طبق رئيسي (مسكوف أو قوزي) + تمن + حلويات ومشروبات</div>
-            </div>
-            <div class="set-menu-price-orb">
-              <strong>115 SAR</strong>
-              <span id="setMenuPerPerson">للشخص • Per Person</span>
-            </div>
-          </div>
+      <div class="welcome-lang-actions">
+        <button type="button" class="welcome-lang-btn primary-ar" onclick="enterMenuWithLang('ar')">
+          <span>العربية</span>
+          <small>تصفح القائمة</small>
+        </button>
+        <button type="button" class="welcome-lang-btn" onclick="enterMenuWithLang('en')">
+          <span>English</span>
+          <small>Explore Menu</small>
+        </button>
+      </div>
+    </div>
+  </section>
 
-          <!-- 10 Glowing Holographic Category Cards -->
-          <div id="categoriesHubGrid" class="categories-hub-grid"></div>
+  <!-- =======================================================================
+       STEP 2 — UNCLUTTERED LIGHT-MODE HOSPITALITY MENU EXPERIENCE
+       ======================================================================= -->
+  <div class="menu-shell">
+
+    <!-- 1. Top Header: Aghatti Logo on one side, Language Toggle + Full Index on the other -->
+    <header class="top-header">
+      <button
+        type="button"
+        id="headerLogoBtn"
+        class="header-brand-btn"
+        onclick="resetToFirstCategory()"
+        title="أغاتي | Aghatti"
+      >
+        <img
+          src="./Aghatti logo-transparent background.png"
+          onerror="this.src='./Aghatti logo.png'"
+          alt="Aghatti Logo"
+          class="header-logo-img"
+        />
+        <div class="header-brand-text">
+          <span class="header-brand-ar" id="brandArTitle">أغاتي</span>
+          <span class="header-brand-en" id="brandEnSubtitle">AGHATTI • IRAQI CUISINE</span>
         </div>
-      </section>
+      </button>
 
-      <!-- ===================================================================
-           VIEW 2: ANTI-GRAVITY DISH SHOWCASE STAGE (Arch-Portal Carousel)
-           =================================================================== -->
-      <section id="dishShowcaseView" class="dish-showcase-view" aria-label="Anti-Gravity Dish Showcase">
-        <div class="category-stage-header">
-          <div>
-            <span id="stageCategoryTitle" class="stage-cat-title"></span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span id="stageSlideCounter" class="stage-cat-counter">1 / 8</span>
-            <button type="button" class="pill-btn" onclick="openCategoryHub()" id="stageHubPillBtn">
-              ← الأقسام / Categories
+      <div class="header-actions">
+        <button type="button" id="langToggle" class="header-btn" onclick="toggleLang()">
+          <span id="langToggleLabel">العربية / English</span>
+        </button>
+        <button type="button" id="fullIndexTopBtn" class="header-btn index-btn" onclick="openFullIndexModal()">
+          <span class="accent-dot"></span>
+          <span id="fullIndexBtnLabel">القائمة الشاملة / Full Index</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. Visible Category Strip with Rounded Square Food Thumbnails -->
+    <nav class="category-strip-wrapper" aria-label="Menu Categories">
+      <div id="categoryStrip" class="category-strip-track"></div>
+    </nav>
+
+    <!-- 3. Clean Full-Width Rounded Search Bar -->
+    <div class="search-section command-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input
+          type="search"
+          id="liveSearchInput"
+          class="search-input"
+          placeholder="بحث في القائمة... / Search menu..."
+          autocomplete="off"
+          oninput="handleLiveSearch(this.value)"
+          onfocus="if(this.value.trim()) handleLiveSearch(this.value)"
+        />
+        <button
+          type="button"
+          id="searchClearBtn"
+          class="search-clear-btn"
+          onclick="clearLiveSearch()"
+          aria-label="Clear search"
+        >×</button>
+      </div>
+
+      <!-- Real-Time Text Search Results Overlay -->
+      <div id="searchResultsDropdown" class="search-results-dropdown" role="listbox"></div>
+    </div>
+
+    <!-- 4. Arch-Frame Showcase & Clean Dish Readout Card -->
+    <section id="dishShowcaseView" class="showcase-card" aria-label="Arch-Frame Dish Showcase">
+      <div class="showcase-top-bar">
+        <div class="showcase-cat-info">
+          <span id="stageCategoryTitle" class="showcase-cat-title"></span>
+          <span id="stageCategorySub" class="showcase-cat-sub"></span>
+        </div>
+        <span id="stageSlideCounter" class="showcase-counter-pill">1 / 4</span>
+      </div>
+
+      <!-- Center Editorial Arch-Frame Stage -->
+      <main class="stage-wrapper" id="swipeArea">
+        <button type="button" class="stage-side-arrow arrow-right" onclick="prevSlide()" aria-label="Previous Dish">‹</button>
+        <div class="arch-window"></div>
+        <div class="carousel-track" id="carouselTrack"></div>
+        <button type="button" class="stage-side-arrow arrow-left" onclick="nextSlide()" aria-label="Next Dish">›</button>
+      </main>
+
+      <!-- Clean Dish Info Below the Arch -->
+      <div class="dish-info">
+        <div id="dishInfoContent" class="info-fade">
+          <h2 id="dishTitlePrimary" class="dish-title-primary"></h2>
+          <div id="dishTitleSecondary" class="dish-title-secondary"></div>
+          <p id="dishDesc" class="dish-desc"></p>
+
+          <div class="meta-row">
+            <span id="dishPrice" class="price-tag"></span>
+            <span id="dishCal" class="cal-tag"></span>
+            <button
+              type="button"
+              class="details-pill-btn"
+              onclick="openDishLightbox(currentSlideIndex)"
+              id="inspectDishBtn"
+            >
+              عرض التفاصيل ✦
             </button>
           </div>
+
+          <div id="dishAllergensRow" class="allergen-row"></div>
         </div>
 
-        <!-- Center Anti-Gravity Arch-Portal Stage -->
-        <main class="stage-wrapper" id="swipeArea">
-          <button type="button" class="stage-side-arrow arrow-right" onclick="prevSlide()" aria-label="Previous Dish">‹</button>
-          <div class="arch-window"></div>
-          <div class="carousel-track" id="carouselTrack"></div>
-          <button type="button" class="stage-side-arrow arrow-left" onclick="nextSlide()" aria-label="Next Dish">›</button>
-        </main>
-
-        <!-- Clean Bottom Dish Readout -->
-        <div class="dish-info">
-          <div id="dishInfoContent" class="info-fade">
-            <h2 id="dishTitleAr" class="dish-title-ar"></h2>
-            <div id="dishTitleEn" class="dish-title-en"></div>
-            <p id="dishDesc" class="dish-desc"></p>
-            <div class="meta-row">
-              <span id="dishPrice" class="price-tag"></span>
-              <span id="dishCal" class="cal-tag"></span>
-              <button type="button" class="pill-btn" onclick="openDishLightbox(currentSlideIndex)" id="inspectDishBtn">
-                تكبير الصورة والتفاصيل ✦
-              </button>
-            </div>
-            <div id="dishAllergensRow" class="allergen-row"></div>
-          </div>
-
-          <div class="nav-footer">
-            <button type="button" class="arrow-btn" onclick="prevSlide()" aria-label="Previous">‹</button>
-            <div id="dotsContainer" class="dots"></div>
-            <button type="button" class="arrow-btn" onclick="nextSlide()" aria-label="Next">›</button>
-          </div>
+        <div class="nav-footer">
+          <button type="button" class="footer-arrow-btn" onclick="prevSlide()" aria-label="Previous">‹</button>
+          <div id="dotsContainer" class="dots"></div>
+          <button type="button" class="footer-arrow-btn" onclick="nextSlide()" aria-label="Next">›</button>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </div>
   </div>
 
   <!-- =======================================================================
-       COMPREHENSIVE TEXT-ONLY MASTER MENU INDEX ("القائمة الشاملة / Full Index")
+       5. TEXT-ONLY MASTER MENU INDEX ("القائمة الشاملة / Full Index")
        ======================================================================= -->
   <div id="fullIndexModal" class="modal-backdrop" onclick="if(event.target.id==='fullIndexModal') closeFullIndexModal()">
     <div class="full-index-card" role="dialog" aria-modal="true" aria-labelledby="fullIndexTitle">
       <div class="full-index-header">
         <div class="full-index-top-row">
           <div>
-            <h2 id="fullIndexTitle" style="font-size:18px; font-weight:900; color:#fff;">
+            <h2 id="fullIndexTitle" style="font-size:17.5px; font-weight:800; color:var(--text-primary);">
               القائمة الشاملة • Full Master Index
             </h2>
-            <p id="fullIndexSub" style="font-size:11.5px; color:var(--light-blue);">
-              اضغط على أي طبق للانتقال الفوري إلى صورته داخل القوس التفاعلي
+            <p id="fullIndexSub" style="font-size:11.5px; color:var(--text-secondary);">
+              اضغط على أي طبق للانتقال الفوري إلى صورته داخل القوس
             </p>
           </div>
           <button type="button" class="modal-close-btn" style="position:static;" onclick="closeFullIndexModal()" aria-label="Close">×</button>
@@ -1517,29 +1487,38 @@
     <div class="modal-card" role="dialog" aria-modal="true">
       <button type="button" class="modal-close-btn" onclick="closeSetMenuModal()" aria-label="Close">×</button>
       <div style="text-align:center; margin-bottom:14px;">
-        <img src="./brand/logo-outline.png" alt="Aghatti" style="height:46px; filter:url(#aghattiOutlineCrisp) drop-shadow(0 0 8px rgba(30,202,211,0.5)); margin-bottom:6px;" />
-        <div class="set-menu-badge">115 SAR • 115 ر.س للشخص</div>
-        <h2 id="setModalHeading" style="font-size:20px; font-weight:900; color:#fff; margin-top:4px;">قائمة الغداء الملكية | SET MENU</h2>
-        <p id="setModalSubtitle" style="font-size:12.5px; color:var(--text-muted); margin-top:4px; line-height:1.5;"></p>
+        <img
+          src="./Aghatti logo-transparent background.png"
+          onerror="this.src='./Aghatti logo.png'"
+          alt="Aghatti"
+          style="height:64px; width:auto; object-fit:contain; margin:0 auto 8px; display:block;"
+        />
+        <span class="price-tag" style="font-size:13px; display:inline-block; margin-bottom:6px;">
+          115 SAR • 115 ر.س للشخص
+        </span>
+        <h2 id="setModalHeading" style="font-size:19px; font-weight:800; color:var(--text-primary);">
+          قائمة الغداء الملكية | SET MENU
+        </h2>
+        <p id="setModalSubtitle" style="font-size:12.5px; color:var(--text-secondary); margin-top:4px; line-height:1.55;"></p>
       </div>
       <div id="setMenuCoursesList"></div>
     </div>
   </div>
 
   <!-- =======================================================================
-       FULL-VIEW DISH LIGHTBOX MODAL
+       FULL-VIEW DISH LIGHTBOX MODAL (Light Theme)
        ======================================================================= -->
   <div id="dishLightbox" class="modal-backdrop" onclick="if(event.target.id==='dishLightbox') closeDishLightbox()">
     <div class="modal-card" role="dialog" aria-modal="true">
       <button type="button" class="modal-close-btn" onclick="closeDishLightbox()" aria-label="Close">×</button>
-      <div style="width:236px; height:306px; margin:4px auto 14px; border-radius:135px 135px 22px 22px; border:2px solid var(--turquoise); overflow:hidden; box-shadow:0 16px 40px rgba(0,0,0,0.75), 0 0 24px rgba(30,202,211,0.32);">
+      <div style="width:232px; height:302px; margin:4px auto 14px; border-radius:132px 132px 20px 20px; border:1.5px solid var(--turquoise); overflow:hidden; box-shadow:0 12px 28px rgba(31,28,24,0.1);">
         <img id="lightboxImg" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block;" />
       </div>
       <div style="text-align:center;">
-        <h2 id="lightboxTitleAr" style="font-size:21px; font-weight:900; color:#fff;"></h2>
-        <div id="lightboxTitleEn" style="font-size:13.5px; font-weight:700; color:var(--light-blue); margin-bottom:8px;"></div>
-        <p id="lightboxDescAr" style="font-size:13px; color:#F5F8FA; line-height:1.55; margin-bottom:6px;"></p>
-        <p id="lightboxDescEn" style="font-size:12px; color:var(--text-muted); line-height:1.5; margin-bottom:12px;"></p>
+        <h2 id="lightboxTitleAr" style="font-size:20px; font-weight:800; color:var(--text-primary);"></h2>
+        <div id="lightboxTitleEn" style="font-size:13px; font-weight:600; color:var(--brand-bronze); margin-bottom:8px;"></div>
+        <p id="lightboxDescAr" style="font-size:13.5px; color:var(--text-primary); line-height:1.6; margin-bottom:6px;"></p>
+        <p id="lightboxDescEn" style="font-size:12.5px; color:var(--text-secondary); line-height:1.55; margin-bottom:14px;"></p>
         <div class="meta-row">
           <span id="lightboxPrice" class="price-tag"></span>
           <span id="lightboxCal" class="cal-tag"></span>
@@ -1551,7 +1530,7 @@
 
   <script>
     // =========================================================================
-    // قاعدة بيانات منيو أغاتي الكاملة (78 طبقاً عبر 10 أقسام + قائمة الغداء 115 ر.س)
+    // قاعدة بيانات منيو أغاتي الكاملة (82 طبقاً عبر 10 أقسام + قائمة الغداء 115 ر.س)
     // =========================================================================
     const ALLERGEN_LABELS = {
   spicy: { ar: "حار", en: "Spicy", icon: "🌶" },
@@ -2177,6 +2156,30 @@
         allergens: []
       },
       {
+        id: "iraqi-dolma",
+        name: { ar: "دولمة عراقية", en: "Iraqi Dolma" },
+        desc: {
+          ar: "تشكيلة خضار وورق عنب وسلق محشوة بالأرز واللحم المتبل بدبس الرمان والتمر الهندي على الطريقة البغدادية",
+          en: "Baghdadi stuffed vine leaves, chard, onions, and vegetables simmered in tangy pomegranate and tamarind broth"
+        },
+        price: 78,
+        calories: 920,
+        image: "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat"]
+      },
+      {
+        id: "bamia-lamb-stew",
+        name: { ar: "مرق بامية باللحم", en: "Iraqi Okra & Lamb Stew" },
+        desc: {
+          ar: "بامية عراقية طازجة مطهوة ببطء مع قطع لحم الغنم بعظم والثوم وصلصة الطماطم الغنية",
+          en: "Slow-simmered baby okra and bone-in tender lamb in a rich Iraqi tomato and garlic reduction"
+        },
+        price: 64,
+        calories: 690,
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=90",
+        allergens: []
+      },
+      {
         id: "oven-meat-tepsi",
         name: { ar: "تبسي لحم بالفرن", en: "Oven-Baked Meat Tepsi" },
         desc: {
@@ -2358,6 +2361,18 @@
         calories: 564,
         image: "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1200&q=90",
         allergens: ["milk", "nuts", "sesame"]
+      },
+      {
+        id: "kahi-gaymar",
+        name: { ar: "كاهي وقيمر عراقي", en: "Iraqi Kahi & Gaymar" },
+        desc: {
+          ar: "رقائق الكاهي العراقي الهشة الدافئة تقدم مع القيمر العراقي الأصلي ودبس التمر أو الشيرة",
+          en: "Warm flaky Iraqi puff pastry layers served with rich traditional buffalo clotted cream and date syrup"
+        },
+        price: 42,
+        calories: 640,
+        image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["wheat", "milk"]
       },
       {
         id: "othmalieh",
@@ -2583,6 +2598,18 @@
         allergens: []
       },
       {
+        id: "iraqi-ayran",
+        name: { ar: "لبن عيران عراقي", en: "Iraqi Foamy Ayran" },
+        desc: {
+          ar: "لبن زبادي عراقي طبيعي مخفوق بالثلج والنعناع البري برغوة غنية ومنعشة",
+          en: "Chilled artisanal Iraqi yogurt drink whipped with wild mint and crushed ice"
+        },
+        price: 18,
+        calories: 110,
+        image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=1200&q=90",
+        allergens: ["milk"]
+      },
+      {
         id: "green-tea-mint",
         name: { ar: "شاي أخضر بالنعناع", en: "Green Tea with Mint" },
         desc: { ar: "شاي أخضر طبيعي مع أوراق النعناع الطازجة", en: "Refreshing whole-leaf green tea steeped with fresh mint" },
@@ -2595,10 +2622,13 @@
   }
 ];
 
+
     let lang = 'ar';
     let currentCatIndex = 0;
     let currentSlideIndex = 0;
-    let isInsideCategory = false;
+
+    // QR lock disabled for Demo Mode; set REQUIRE_QR_LOCK = true to re-enable
+    const REQUIRE_QR_LOCK = false;
 
     function normalizeText(str) {
       return String(str || '')
@@ -2609,20 +2639,14 @@
         .trim();
     }
 
-    // Set REQUIRE_QR_LOCK = true to re-enable the QR lock screen requirement (?qr=valid)
-    const REQUIRE_QR_LOCK = false;
-
     function checkQRAccess() {
       const params = new URLSearchParams(window.location.search);
       const isValid = !REQUIRE_QR_LOCK || params.get('qr') === 'valid' || sessionStorage.getItem('aghatti_qr') === 'true';
-      const table = String(params.get('t') || sessionStorage.getItem('aghatti_table') || '01').padStart(2, '0');
-      sessionStorage.setItem('aghatti_table', table);
-      document.getElementById('tableBadge').textContent = lang === 'ar' ? `طاولة #${table}` : `Table #${table}`;
+      const lockEl = document.getElementById('qrLockScreen');
       if (!isValid) {
-        document.getElementById('qrLockScreen').classList.add('visible');
+        lockEl.classList.add('visible');
       } else {
-        sessionStorage.setItem('aghatti_qr', 'true');
-        document.getElementById('qrLockScreen').classList.remove('visible');
+        lockEl.classList.remove('visible');
       }
     }
 
@@ -2631,22 +2655,114 @@
       document.getElementById('qrLockScreen').classList.remove('visible');
     }
 
-    function attach3DTilt(selector) {
-      document.querySelectorAll(selector).forEach(card => {
-        card.addEventListener('pointermove', e => {
-          const r = card.getBoundingClientRect();
-          const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-          const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
-          card.style.transform = `perspective(800px) rotateX(${(-ny * 7).toFixed(2)}deg) rotateY(${(nx * 7).toFixed(2)}deg) scale3d(1.02,1.02,1.02)`;
-        });
-        card.addEventListener('pointerleave', () => {
-          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-        });
-      });
+    // =========================================================================
+    // Step 1 — Serene Welcome Language Gate
+    // =========================================================================
+    function enterMenuWithLang(selectedLang) {
+      lang = selectedLang === 'en' ? 'en' : 'ar';
+      applyLanguageState();
+      const gate = document.getElementById('welcomeGate');
+      gate.classList.add('dismissed');
+      sessionStorage.setItem('aghatti_lang', lang);
+    }
+
+    function applyLanguageState() {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      document.getElementById('langToggleLabel').textContent = lang === 'ar'
+        ? 'العربية / English'
+        : 'English / العربية';
+
+      document.getElementById('fullIndexBtnLabel').textContent = lang === 'ar'
+        ? 'القائمة الشاملة / Full Index'
+        : 'Full Index / القائمة الشاملة';
+
+      document.getElementById('liveSearchInput').placeholder = lang === 'ar'
+        ? 'بحث في القائمة... / Search menu...'
+        : 'Search menu... / بحث في القائمة...';
+
+      renderCategoryStrip();
+      renderCarousel();
+    }
+
+    function toggleLang() {
+      lang = lang === 'ar' ? 'en' : 'ar';
+      sessionStorage.setItem('aghatti_lang', lang);
+      applyLanguageState();
+      if (document.getElementById('liveSearchInput').value.trim()) {
+        handleLiveSearch(document.getElementById('liveSearchInput').value);
+      }
+    }
+
+    function resetToFirstCategory() {
+      clearLiveSearch();
+      currentCatIndex = 0;
+      currentSlideIndex = 0;
+      renderCategoryStrip();
+      renderCarousel();
     }
 
     // =========================================================================
-    // 1. Live Search Bar & Instant Dish Jump + Lightbox
+    // Step 2 — Visible Category Strip with Rounded Square Food Thumbnails
+    // =========================================================================
+    function renderCategoryStrip() {
+      const strip = document.getElementById('categoryStrip');
+      const setThumb = "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=85";
+
+      const catsHtml = MENU_DATA.map((cat, idx) => {
+        const isActive = idx === currentCatIndex;
+        const label = lang === 'ar' ? cat.name.ar : cat.name.en;
+        const countText = lang === 'ar' ? `${cat.items.length} أطباق` : `${cat.items.length} items`;
+        return `
+          <button
+            type="button"
+            id="cat-pill-${idx}"
+            class="cat-thumb-card ${isActive ? 'active' : ''}"
+            onclick="selectCategory(${idx})"
+          >
+            <div class="cat-thumb-box">
+              <img src="${cat.thumbnail}" alt="${cat.name.ar} - ${cat.name.en}" loading="eager" />
+            </div>
+            <span class="cat-thumb-title">${label}</span>
+            <span class="cat-thumb-count">${countText}</span>
+          </button>
+        `;
+      }).join('');
+
+      const setMenuHtml = `
+        <button
+          type="button"
+          class="cat-thumb-card set-menu-special"
+          onclick="openSetMenuModal()"
+        >
+          <div class="cat-thumb-box">
+            <img src="${setThumb}" alt="Set Menu 115 SAR" loading="eager" />
+          </div>
+          <span class="cat-thumb-title">${lang === 'ar' ? 'قائمة الغداء' : 'Set Menu'}</span>
+          <span class="cat-thumb-count" style="color:var(--turquoise); font-weight:800;">
+            ${lang === 'ar' ? '115 ر.س' : '115 SAR'}
+          </span>
+        </button>
+      `;
+
+      strip.innerHTML = catsHtml + setMenuHtml;
+
+      const activeBtn = document.getElementById(`cat-pill-${currentCatIndex}`);
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+
+    function selectCategory(catIdx) {
+      currentCatIndex = catIdx;
+      currentSlideIndex = 0;
+      renderCategoryStrip();
+      renderCarousel();
+    }
+
+    // =========================================================================
+    // Live Search Bar & Instant Dish Jump + Lightbox
     // =========================================================================
     function handleLiveSearch(rawQuery) {
       const dropdown = document.getElementById('searchResultsDropdown');
@@ -2675,7 +2791,7 @@
 
       if (matches.length === 0) {
         dropdown.innerHTML = `
-          <div style="padding:16px; text-align:center; font-size:12.5px; color:var(--text-muted);">
+          <div style="padding:16px; text-align:center; font-size:13px; color:var(--text-muted);">
             ${lang === 'ar' ? 'لا توجد أطباق مطابقة لبحثك' : 'No matching dishes found'}
           </div>
         `;
@@ -2719,17 +2835,16 @@
     }
 
     // =========================================================================
-    // 2. Comprehensive Text-Only Master Menu View ("القائمة الشاملة / Full Index")
+    // Comprehensive Text-Only Master Menu View ("القائمة الشاملة / Full Index")
     // =========================================================================
     function renderFullIndexModal() {
       document.getElementById('fullIndexTitle').textContent = lang === 'ar'
         ? 'القائمة الشاملة • Full Master Index'
         : 'Full Master Menu Index • القائمة الشاملة';
       document.getElementById('fullIndexSub').textContent = lang === 'ar'
-        ? 'اضغط على أي طبق للانتقال الفوري إلى صورته داخل القوس التفاعلي'
-        : 'Tap any dish row to jump directly to its photo in the Center Arch Carousel';
+        ? 'اضغط على أي طبق للانتقال الفوري إلى صورته داخل القوس'
+        : 'Tap any dish row to jump directly to its photo in the Arch Carousel';
 
-      // Quick category jump strip inside drawer
       const strip = document.getElementById('fullIndexCatStrip');
       strip.innerHTML = MENU_DATA.map((cat, idx) => `
         <button type="button" class="index-jump-chip" onclick="scrollToIndexCategory('index-cat-${idx}')">
@@ -2737,13 +2852,12 @@
         </button>
       `).join('');
 
-      // Pure text-only master list (NO images)
       const setPriceUnit = lang === 'ar' ? '115 ر.س' : '115 SAR';
       const setBlockHtml = `
         <div class="index-category-block">
           <div class="index-cat-heading">
             <span>✦ ${SET_MENU_DATA.title.ar}</span>
-            <span style="font-size:12px; color:var(--light-blue);">${setPriceUnit}</span>
+            <span style="font-size:12px; color:var(--brand-bronze);">${setPriceUnit}</span>
           </div>
           <button type="button" class="index-text-row" onclick="closeFullIndexModal(); openSetMenuModal();">
             <div>
@@ -2783,7 +2897,7 @@
           <div class="index-category-block" id="index-cat-${catIdx}">
             <div class="index-cat-heading">
               <span>${String(cat.order).padStart(2, '0')}. ${cat.name.ar} | ${cat.name.en}</span>
-              <span style="font-size:11.5px; color:var(--light-blue);">${cat.items.length} ${lang === 'ar' ? 'أطباق' : 'Dishes'}</span>
+              <span style="font-size:11.5px; color:var(--text-muted);">${cat.items.length} ${lang === 'ar' ? 'أطباق' : 'Dishes'}</span>
             </div>
             ${rows}
           </div>
@@ -2814,15 +2928,7 @@
       clearLiveSearch();
       currentCatIndex = catIdx;
       currentSlideIndex = dishIdx;
-      isInsideCategory = true;
-
-      document.getElementById('portalHubView').classList.add('hidden');
-      const showcase = document.getElementById('dishShowcaseView');
-      showcase.classList.remove('active');
-      void showcase.offsetWidth;
-      showcase.classList.add('active');
-      document.getElementById('backToCategoriesBtn').classList.add('visible');
-
+      renderCategoryStrip();
       renderCarousel();
       if (openLightboxAfter) {
         openDishLightbox(dishIdx);
@@ -2830,69 +2936,7 @@
     }
 
     // =========================================================================
-    // Space-Age Category Portal Hub (All 10 Categories + Set Menu)
-    // =========================================================================
-    function renderCategoryHub() {
-      const totalDishes = MENU_DATA.reduce((sum, c) => sum + c.items.length, 0);
-      document.getElementById('hubIntroBadge').textContent = lang === 'ar'
-        ? `✦ بوابة الأقسام الفضائية • 10 أقسام • ${totalDishes} طبقاً فاخراً`
-        : `✦ Space-Age Category Portal • 10 Categories • ${totalDishes} Dishes`;
-      document.getElementById('hubMainTitle').textContent = lang === 'ar'
-        ? 'منيو أغاتي للمأكولات العراقية الفاخرة'
-        : 'Aghatti Luxury Iraqi Gastronomy Menu';
-      document.getElementById('setMenuTopBtn').textContent = lang === 'ar'
-        ? '✦ قائمة الغداء 115 ر.س'
-        : '✦ Set Menu 115 SAR';
-      document.getElementById('fullIndexBtnLabel').textContent = lang === 'ar'
-        ? 'القائمة الشاملة / Full Index'
-        : 'Full Index / القائمة الشاملة';
-      document.getElementById('liveSearchInput').placeholder = lang === 'ar'
-        ? 'ابحث بالاسم أو القسم... / Search menu...'
-        : 'Search dish or category... / ابحث في المنيو';
-      document.getElementById('setMenuCardTitle').textContent = SET_MENU_DATA.title[lang];
-      document.getElementById('setMenuCardSub').textContent = SET_MENU_DATA.subtitle[lang];
-
-      const grid = document.getElementById('categoriesHubGrid');
-      grid.innerHTML = MENU_DATA.map((cat, idx) => {
-        const floatClass = idx % 2 === 0 ? 'holo-cat-wrap-even' : 'holo-cat-wrap-odd';
-        const delay = (idx * 0.22).toFixed(2);
-        const countLabel = lang === 'ar' ? `${cat.items.length} أطباق` : `${cat.items.length} Dishes`;
-        return `
-          <div class="${floatClass}" style="animation-delay:${delay}s;">
-            <article class="holo-cat-card" onclick="enterCategoryShowcase(${idx})" role="button" tabindex="0">
-              <div class="holo-cat-top">
-                <span class="holo-cat-num">${String(cat.order).padStart(2, '0')}</span>
-                <span class="holo-cat-count">${countLabel}</span>
-              </div>
-              <div class="holo-cat-arch">
-                <img src="${cat.thumbnail}" alt="${cat.name.ar} | ${cat.name.en}" loading="eager" />
-              </div>
-              <div>
-                <div class="holo-cat-name-ar">${cat.name.ar}</div>
-                <div class="holo-cat-name-en">${cat.name.en}</div>
-              </div>
-            </article>
-          </div>
-        `;
-      }).join('');
-
-      attach3DTilt('.holo-cat-card');
-    }
-
-    function openCategoryHub() {
-      isInsideCategory = false;
-      document.getElementById('portalHubView').classList.remove('hidden');
-      document.getElementById('dishShowcaseView').classList.remove('active');
-      document.getElementById('backToCategoriesBtn').classList.remove('visible');
-      renderCategoryHub();
-    }
-
-    function enterCategoryShowcase(catIdx) {
-      goToCategoryAndDish(catIdx, 0, false);
-    }
-
-    // =========================================================================
-    // Anti-Gravity Dish Showcase Inside Selected Category
+    // Arch-Frame Showcase & Clean Dish Cards
     // =========================================================================
     function renderCarousel() {
       const cat = MENU_DATA[currentCatIndex];
@@ -2900,7 +2944,8 @@
       const total = items.length;
       const track = document.getElementById('carouselTrack');
 
-      document.getElementById('stageCategoryTitle').textContent = `${cat.name.ar} | ${cat.name.en}`;
+      document.getElementById('stageCategoryTitle').textContent = `${cat.name.ar} • ${cat.name.en}`;
+      document.getElementById('stageCategorySub').textContent = cat.subtitle[lang];
       document.getElementById('stageSlideCounter').textContent = `${currentSlideIndex + 1} / ${total}`;
 
       track.innerHTML = items.map((item, idx) => {
@@ -2922,8 +2967,12 @@
       void infoBox.offsetWidth;
       infoBox.classList.add('info-fade');
 
-      document.getElementById('dishTitleAr').textContent = activeItem.name.ar;
-      document.getElementById('dishTitleEn').textContent = activeItem.name.en;
+      document.getElementById('dishTitlePrimary').textContent = lang === 'ar'
+        ? activeItem.name.ar
+        : activeItem.name.en;
+      document.getElementById('dishTitleSecondary').textContent = lang === 'ar'
+        ? activeItem.name.en
+        : activeItem.name.ar;
       document.getElementById('dishDesc').textContent = activeItem.desc[lang];
       document.getElementById('dishPrice').textContent = lang === 'ar'
         ? `${activeItem.price} ر.س`
@@ -2938,18 +2987,18 @@
       }
 
       document.getElementById('inspectDishBtn').textContent = lang === 'ar'
-        ? 'تكبير الصورة والتفاصيل ✦'
-        : 'Full View & Details ✦';
+        ? 'عرض التفاصيل ✦'
+        : 'Full Details ✦';
 
       const alRow = document.getElementById('dishAllergensRow');
       if (activeItem.allergens && activeItem.allergens.length > 0) {
         alRow.innerHTML = activeItem.allergens.map(al => {
           const meta = ALLERGEN_LABELS[al];
           if (!meta) return '';
-          return `<span class="allergen-badge">${meta.icon} ${meta.ar} • ${meta.en}</span>`;
+          return `<span class="allergen-badge">${meta.icon} ${lang === 'ar' ? meta.ar : meta.en}</span>`;
         }).join('');
       } else {
-        alRow.innerHTML = `<span class="allergen-clean">${lang === 'ar' ? '✓ خالٍ من مسببات الحساسية الشائعة' : '✓ Free from common allergens'}</span>`;
+        alRow.innerHTML = `<span class="allergen-clean">${lang === 'ar' ? '✓ محضر طازجاً يومياً' : '✓ Freshly prepared daily'}</span>`;
       }
 
       document.getElementById('dotsContainer').innerHTML = items.map((_, idx) => `
@@ -2982,18 +3031,6 @@
       renderCarousel();
     }
 
-    function toggleLang() {
-      lang = lang === 'ar' ? 'en' : 'ar';
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      document.getElementById('langToggle').textContent = lang === 'ar' ? 'EN' : 'عربي';
-      checkQRAccess();
-      renderCategoryHub();
-      if (isInsideCategory) {
-        renderCarousel();
-      }
-    }
-
     // =========================================================================
     // Set Menu Modal (115 SAR) & Full-View Dish Lightbox
     // =========================================================================
@@ -3004,10 +3041,10 @@
         <div class="course-step-card">
           <span class="course-step-num">${c.step}</span>
           <div>
-            <div style="font-size:14px; font-weight:900; color:#fff; margin-bottom:2px;">
+            <div style="font-size:14px; font-weight:800; color:var(--text-primary); margin-bottom:2px;">
               ${c.title.ar} • ${c.title.en}
             </div>
-            <div style="font-size:12px; color:var(--text-muted); line-height:1.5;">
+            <div style="font-size:12.5px; color:var(--text-secondary); line-height:1.55;">
               ${c.detail[lang]}
             </div>
           </div>
@@ -3086,7 +3123,7 @@
       if (Math.abs(d) < 12) return;
       wheelLock = true;
       d > 0 ? nextSlide() : prevSlide();
-      setTimeout(() => { wheelLock = false; }, 380);
+      setTimeout(() => { wheelLock = false; }, 360);
     }, { passive: false });
 
     window.addEventListener('keydown', e => {
@@ -3095,56 +3132,16 @@
         closeSetMenuModal();
         closeDishLightbox();
         clearLiveSearch();
-      } else if (isInsideCategory && e.key === 'ArrowLeft') {
+      } else if (e.key === 'ArrowLeft') {
         lang === 'ar' ? nextSlide() : prevSlide();
-      } else if (isInsideCategory && e.key === 'ArrowRight') {
+      } else if (e.key === 'ArrowRight') {
         lang === 'ar' ? prevSlide() : nextSlide();
       }
     });
 
-    // Floating Ambient Star-Particles in Turquoise (#1ECAD3) & Light Blue (#63D2FF)
-    (function initCosmicParticles() {
-      const canvas = document.getElementById('starParticles');
-      const ctx = canvas.getContext('2d');
-      let w = canvas.width = window.innerWidth;
-      let h = canvas.height = window.innerHeight;
-      window.addEventListener('resize', () => {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-      });
-      const palette = ['#1ECAD3', '#63D2FF', '#FFFFFF'];
-      const stars = Array.from({ length: 95 }, (_, i) => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: 0.7 + Math.random() * 1.7,
-        vy: -0.12 - Math.random() * 0.25,
-        vx: (Math.random() - 0.5) * 0.12,
-        color: palette[i % palette.length],
-        phase: Math.random() * Math.PI * 2
-      }));
-      function draw(t) {
-        ctx.clearRect(0, 0, w, h);
-        for (const s of stars) {
-          s.y += s.vy;
-          s.x += s.vx;
-          if (s.y < -8) s.y = h + 8;
-          if (s.x < -8) s.x = w + 8;
-          if (s.x > w + 8) s.x = -8;
-          ctx.beginPath();
-          ctx.fillStyle = s.color;
-          ctx.globalAlpha = 0.28 + 0.52 * Math.sin(t * 0.002 + s.phase);
-          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(draw);
-      }
-      requestAnimationFrame(draw);
-    })();
-
     // Boot
     checkQRAccess();
-    renderCategoryHub();
+    applyLanguageState();
   </script>
 </body>
 </html>
