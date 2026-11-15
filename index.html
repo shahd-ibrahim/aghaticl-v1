@@ -533,7 +533,7 @@
       inset-inline: 0;
       max-height: 360px;
       overflow-y: auto;
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.96);
       border: 1px solid var(--border-warm-strong);
       border-radius: 20px;
       padding: 8px;
@@ -723,6 +723,8 @@
       align-items: center;
       justify-content: center;
       z-index: 5;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
     }
 
     .dish-slide {
@@ -731,13 +733,13 @@
       height: 302px;
       border-radius: 133px 133px 18px 18px;
       overflow: hidden;
-      transition: transform 0.52s var(--ease-luxury),
-                  opacity 0.52s var(--ease-luxury),
-                  filter 0.52s var(--ease-luxury);
+      transition: transform 0.45s var(--ease-luxury),
+                  opacity 0.45s var(--ease-luxury);
       cursor: pointer;
       box-shadow: 0 12px 28px rgba(31, 28, 24, 0.12);
       background: var(--bg-subtle);
       will-change: transform, opacity;
+      backface-visibility: hidden;
     }
 
     .dish-slide img {
@@ -763,14 +765,12 @@
       transform: translate3d(175px, 10px, -40px) scale(0.76);
       opacity: 0.34;
       z-index: 4;
-      filter: saturate(0.85);
     }
 
     .dish-slide.next {
       transform: translate3d(-175px, 10px, -40px) scale(0.76);
       opacity: 0.34;
       z-index: 4;
-      filter: saturate(0.85);
     }
 
     [dir="ltr"] .dish-slide.prev {
@@ -796,7 +796,7 @@
       height: 42px;
       border-radius: 50%;
       border: 1px solid var(--border-warm-strong);
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.96);
       color: var(--text-primary);
       font-size: 21px;
       font-weight: 700;
@@ -1006,8 +1006,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(31, 28, 24, 0.42);
-      backdrop-filter: blur(6px);
+      background: rgba(31, 28, 24, 0.48);
       z-index: 600;
       display: none;
       align-items: center;
@@ -1026,7 +1025,7 @@
       max-height: 90dvh;
       overflow-y: auto;
       scrollbar-width: none;
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.96);
       border: 1px solid var(--border-warm);
       border-radius: 26px;
       padding: 22px 20px 24px;
@@ -1067,7 +1066,7 @@
       max-height: 840px;
       display: flex;
       flex-direction: column;
-      background: var(--bg-canvas);
+      background: rgba(255, 255, 255, 0.96);
       border: 1px solid var(--border-warm);
       border-radius: 26px;
       box-shadow: var(--shadow-elevated);
@@ -1285,6 +1284,8 @@
         src="./Aghatti logo-transparent background.png"
         onerror="this.src='./Aghatti logo.png'"
         alt="Aghatti Iraqi Cuisine"
+        loading="lazy"
+        decoding="async"
         style="height:110px; width:auto; object-fit:contain; margin:0 auto 14px; display:block;"
       />
       <h2 style="font-size:19px; margin-bottom:8px; color:var(--text-primary);">يرجى مسح الباركود على الطاولة</h2>
@@ -1313,6 +1314,7 @@
           src="./Aghatti logo-transparent background.png"
           onerror="this.src='./Aghatti logo.png'"
           alt="أغاتي | Aghatti Iraqi Cuisine"
+          decoding="async"
           class="welcome-logo"
         />
       </div>
@@ -1355,6 +1357,7 @@
           src="./Aghatti logo-transparent background.png"
           onerror="this.src='./Aghatti logo.png'"
           alt="Aghatti Logo"
+          decoding="async"
           class="header-logo-img"
         />
         <div class="header-brand-text">
@@ -1491,6 +1494,8 @@
           src="./Aghatti logo-transparent background.png"
           onerror="this.src='./Aghatti logo.png'"
           alt="Aghatti"
+          loading="lazy"
+          decoding="async"
           style="height:64px; width:auto; object-fit:contain; margin:0 auto 8px; display:block;"
         />
         <span class="price-tag" style="font-size:13px; display:inline-block; margin-bottom:6px;">
@@ -1512,7 +1517,7 @@
     <div class="modal-card" role="dialog" aria-modal="true">
       <button type="button" class="modal-close-btn" onclick="closeDishLightbox()" aria-label="Close">×</button>
       <div style="width:232px; height:302px; margin:4px auto 14px; border-radius:132px 132px 20px 20px; border:1.5px solid var(--turquoise); overflow:hidden; box-shadow:0 12px 28px rgba(31,28,24,0.1);">
-        <img id="lightboxImg" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <img id="lightboxImg" src="" alt="" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;" />
       </div>
       <div style="text-align:center;">
         <h2 id="lightboxTitleAr" style="font-size:20px; font-weight:800; color:var(--text-primary);"></h2>
@@ -1668,7 +1673,7 @@
         },
         price: 35,
         calories: 447,
-        image: "https://images.unsplash.com/photo-1593001874117-c99c800e3eb7?auto=format&fit=crop&w=1200&q=90",
+        image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=90",
         allergens: ["sesame", "nuts", "milk"]
       },
       {
@@ -1765,7 +1770,7 @@
         },
         price: 29,
         calories: 420,
-        image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=1200&q=90",
+        image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1200&q=90",
         allergens: ["spicy"]
       },
       {
@@ -2626,6 +2631,8 @@
     let lang = 'ar';
     let currentCatIndex = 0;
     let currentSlideIndex = 0;
+    let renderedCatStripLang = null;
+    let renderedCarouselCatIndex = -1;
 
     // QR lock disabled for Demo Mode; set REQUIRE_QR_LOCK = true to re-enable
     const REQUIRE_QR_LOCK = false;
@@ -2710,43 +2717,52 @@
       const strip = document.getElementById('categoryStrip');
       const setThumb = "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=85";
 
-      const catsHtml = MENU_DATA.map((cat, idx) => {
-        const isActive = idx === currentCatIndex;
-        const label = lang === 'ar' ? cat.name.ar : cat.name.en;
-        const countText = lang === 'ar' ? `${cat.items.length} أطباق` : `${cat.items.length} items`;
-        return `
+      if (renderedCatStripLang !== lang) {
+        const catsHtml = MENU_DATA.map((cat, idx) => {
+          const isActive = idx === currentCatIndex;
+          const label = lang === 'ar' ? cat.name.ar : cat.name.en;
+          const countText = lang === 'ar' ? `${cat.items.length} أطباق` : `${cat.items.length} items`;
+          return `
+            <button
+              type="button"
+              id="cat-pill-${idx}"
+              class="cat-thumb-card ${isActive ? 'active' : ''}"
+              onclick="selectCategory(${idx})"
+            >
+              <div class="cat-thumb-box">
+                <img src="${cat.thumbnail}" alt="${cat.name.ar} - ${cat.name.en}" loading="lazy" decoding="async" />
+              </div>
+              <span class="cat-thumb-title">${label}</span>
+              <span class="cat-thumb-count">${countText}</span>
+            </button>
+          `;
+        }).join('');
+
+        const setMenuHtml = `
           <button
             type="button"
-            id="cat-pill-${idx}"
-            class="cat-thumb-card ${isActive ? 'active' : ''}"
-            onclick="selectCategory(${idx})"
+            class="cat-thumb-card set-menu-special"
+            onclick="openSetMenuModal()"
           >
             <div class="cat-thumb-box">
-              <img src="${cat.thumbnail}" alt="${cat.name.ar} - ${cat.name.en}" loading="eager" />
+              <img src="${setThumb}" alt="Set Menu 115 SAR" loading="lazy" decoding="async" />
             </div>
-            <span class="cat-thumb-title">${label}</span>
-            <span class="cat-thumb-count">${countText}</span>
+            <span class="cat-thumb-title">${lang === 'ar' ? 'قائمة الغداء' : 'Set Menu'}</span>
+            <span class="cat-thumb-count" style="color:var(--turquoise); font-weight:800;">
+              ${lang === 'ar' ? '115 ر.س' : '115 SAR'}
+            </span>
           </button>
         `;
-      }).join('');
 
-      const setMenuHtml = `
-        <button
-          type="button"
-          class="cat-thumb-card set-menu-special"
-          onclick="openSetMenuModal()"
-        >
-          <div class="cat-thumb-box">
-            <img src="${setThumb}" alt="Set Menu 115 SAR" loading="eager" />
-          </div>
-          <span class="cat-thumb-title">${lang === 'ar' ? 'قائمة الغداء' : 'Set Menu'}</span>
-          <span class="cat-thumb-count" style="color:var(--turquoise); font-weight:800;">
-            ${lang === 'ar' ? '115 ر.س' : '115 SAR'}
-          </span>
-        </button>
-      `;
-
-      strip.innerHTML = catsHtml + setMenuHtml;
+        strip.innerHTML = catsHtml + setMenuHtml;
+        renderedCatStripLang = lang;
+      } else {
+        // Update active state in-place without reloading category thumbnail images
+        MENU_DATA.forEach((_, idx) => {
+          const btn = document.getElementById(`cat-pill-${idx}`);
+          if (btn) btn.classList.toggle('active', idx === currentCatIndex);
+        });
+      }
 
       const activeBtn = document.getElementById(`cat-pill-${currentCatIndex}`);
       if (activeBtn) {
@@ -2936,37 +2952,52 @@
     }
 
     // =========================================================================
-    // Arch-Frame Showcase & Clean Dish Cards
+    // Arch-Frame Showcase & Clean Dish Cards (60fps In-Place DOM Transitions)
     // =========================================================================
     function renderCarousel() {
       const cat = MENU_DATA[currentCatIndex];
       const items = cat.items;
       const total = items.length;
       const track = document.getElementById('carouselTrack');
+      const dotsBox = document.getElementById('dotsContainer');
 
       document.getElementById('stageCategoryTitle').textContent = `${cat.name.ar} • ${cat.name.en}`;
       document.getElementById('stageCategorySub').textContent = cat.subtitle[lang];
       document.getElementById('stageSlideCounter').textContent = `${currentSlideIndex + 1} / ${total}`;
 
-      track.innerHTML = items.map((item, idx) => {
-        let stateClass = 'hidden';
-        if (idx === currentSlideIndex) stateClass = 'active';
-        else if (idx === (currentSlideIndex - 1 + total) % total) stateClass = 'prev';
-        else if (idx === (currentSlideIndex + 1) % total) stateClass = 'next';
-
-        return `
-          <div class="dish-slide ${stateClass}" onclick="handleSlideTap(${idx})" role="button" tabindex="0">
-            <img src="${item.image}" alt="${item.name.ar} - ${item.name.en}" loading="eager" />
+      if (renderedCarouselCatIndex !== currentCatIndex) {
+        track.innerHTML = items.map((item, idx) => `
+          <div id="dish-slide-${idx}" class="dish-slide hidden" onclick="handleSlideTap(${idx})" role="button" tabindex="0">
+            <img src="${item.image}" alt="${item.name.ar} - ${item.name.en}" loading="lazy" decoding="async" />
           </div>
-        `;
-      }).join('');
+        `).join('');
+
+        dotsBox.innerHTML = items.map((_, idx) => `
+          <span id="dish-dot-${idx}" class="dot" onclick="goToSlide(${idx})"></span>
+        `).join('');
+
+        renderedCarouselCatIndex = currentCatIndex;
+      }
+
+      const prevIdx = (currentSlideIndex - 1 + total) % total;
+      const nextIdx = (currentSlideIndex + 1) % total;
+
+      for (let idx = 0; idx < total; idx++) {
+        const slideEl = document.getElementById(`dish-slide-${idx}`);
+        if (slideEl) {
+          let stateClass = 'hidden';
+          if (idx === currentSlideIndex) stateClass = 'active';
+          else if (idx === prevIdx) stateClass = 'prev';
+          else if (idx === nextIdx) stateClass = 'next';
+          slideEl.className = `dish-slide ${stateClass}`;
+        }
+        const dotEl = document.getElementById(`dish-dot-${idx}`);
+        if (dotEl) {
+          dotEl.classList.toggle('active', idx === currentSlideIndex);
+        }
+      }
 
       const activeItem = items[currentSlideIndex];
-      const infoBox = document.getElementById('dishInfoContent');
-      infoBox.classList.remove('info-fade');
-      void infoBox.offsetWidth;
-      infoBox.classList.add('info-fade');
-
       document.getElementById('dishTitlePrimary').textContent = lang === 'ar'
         ? activeItem.name.ar
         : activeItem.name.en;
@@ -3000,10 +3031,6 @@
       } else {
         alRow.innerHTML = `<span class="allergen-clean">${lang === 'ar' ? '✓ محضر طازجاً يومياً' : '✓ Freshly prepared daily'}</span>`;
       }
-
-      document.getElementById('dotsContainer').innerHTML = items.map((_, idx) => `
-        <span class="dot ${idx === currentSlideIndex ? 'active' : ''}" onclick="goToSlide(${idx})"></span>
-      `).join('');
     }
 
     function handleSlideTap(idx) {
